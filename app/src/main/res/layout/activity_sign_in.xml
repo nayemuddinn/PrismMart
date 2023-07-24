@@ -31,6 +31,7 @@
         android:hint="Email"
         android:padding="15dp"
         android:textColor="#000000"
+        android:textColorHint="@color/TextColorHint"
         android:textSize="20dp"></EditText>
 
 
@@ -46,35 +47,37 @@
         android:hint="Password"
         android:padding="15dp"
         android:textColor="#000000"
+        android:textColorHint="@color/TextColorHint"
         android:textSize="20dp"></EditText>
 
 
+    <RadioGroup
+        android:id="@+id/signinPage_radiogroup"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal">
 
-        <RadioGroup
-            android:id="@+id/signinPage_radiogroup"
-            android:layout_width="320dp"
+        <RadioButton
+            android:id="@+id/signinPage_rAdminButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="end">
+            android:text="Admin"
+            android:textColor="@color/black"
+            app:buttonTint="@color/AppTheme"></RadioButton>
 
-            <RadioButton
-                android:id="@+id/signinPage_rAdminButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Admin"
-                app:buttonTint="@color/AppTheme"></RadioButton>
-
-            <RadioButton
-                android:id="@+id/signinPage_rCustomerButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Customer"
-                app:buttonTint="@color/AppTheme"></RadioButton>
-        </RadioGroup>
-
+        <RadioButton
+            android:id="@+id/signinPage_rCustomerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Customer"
+            android:textColor="@color/black"
+            app:buttonTint="@color/AppTheme"></RadioButton>
+    </RadioGroup>
 
 
     <Button
+        android:textColor="@color/white"
         android:id="@+id/signin_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
