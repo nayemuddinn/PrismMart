@@ -49,6 +49,21 @@
         android:textSize="20dp"></EditText>
 
     <EditText
+        android:id="@+id/signupPage_phone"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/edit_text_bg"
+        android:drawableLeft="@drawable/baseline_local_phone_24"
+        android:drawablePadding="10dp"
+        android:elevation="3dp"
+        android:hint="Phone"
+        android:padding="15dp"
+        android:textColor="#000000"
+        android:textSize="20dp"></EditText>
+
+
+    <EditText
         android:id="@+id/signupPage_password"
         android:layout_width="350dp"
         android:layout_height="50dp"

@@ -20,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class sign_up extends AppCompatActivity {
-    EditText getUsername, getPassword, getEmail;
+    EditText getUsername, getPassword, getEmail,getPhone;
     Button signUpButton;
     TextView signInoption;
     private FirebaseAuth auth;
@@ -36,6 +36,7 @@ public class sign_up extends AppCompatActivity {
         getEmail = findViewById(R.id.signupPage_Email);
         signUpButton = findViewById(R.id.signup_button);
         signInoption = findViewById(R.id.signUpPage_signIn);
+        getPhone=findViewById(R.id.signupPage_phone);
         auth = FirebaseAuth.getInstance();
 
 
@@ -45,10 +46,12 @@ public class sign_up extends AppCompatActivity {
                 String username = getUsername.getText().toString();
                 String password = getPassword.getText().toString();
                 String email = getEmail.getText().toString();
+                String phone=getPhone.getText().toString();
 
                 getUsername.setText("");
                 getPassword.setText("");
                 getEmail.setText("");
+                getPhone.setText("");
 
 
                  /* if(TextUtils.isEmpty(username))
@@ -68,6 +71,13 @@ public class sign_up extends AppCompatActivity {
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     getEmail.setError("Enter a valid email");
                     getEmail.requestFocus();
+                    return;
+                }
+
+                if(phone.length()!=11)
+                {
+                    getPhone.setError("Enter a valid phone number");
+                    getPhone.requestFocus();
                     return;
                 }
 
