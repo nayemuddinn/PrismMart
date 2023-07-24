@@ -14,8 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.prismmart.Adapter.SliderAdapter;
+import com.example.prismmart.Login.sign_in;
 import com.example.prismmart.UIAdmin.Admin_homePage;
 import com.example.prismmart.R;
+import com.example.prismmart.UIUser.User_homePage;
 
 public class HomePage_onBoard extends AppCompatActivity {
 
@@ -46,8 +48,16 @@ public class HomePage_onBoard extends AppCompatActivity {
         letsGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomePage_onBoard.this, Admin_homePage.class));
-                finish();
+
+                if(sign_in.userType=="Admin") {
+                    startActivity(new Intent(HomePage_onBoard.this, Admin_homePage.class));
+                    finish();
+                }
+                else
+                {
+                    startActivity(new Intent(HomePage_onBoard.this, User_homePage.class));
+                    finish();
+                }
             }
         });
 

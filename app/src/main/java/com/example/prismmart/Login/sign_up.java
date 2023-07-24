@@ -68,9 +68,6 @@ public class sign_up extends AppCompatActivity {
                 getPhone.setText("");
 
 
-                 /* if(TextUtils.isEmpty(username))
-                      Toast.makeText(sign_up.this, "Enter name", Toast.LENGTH_SHORT).show();*/
-
                 if (username.isEmpty()) {
                     getUsername.setError("Enter a Username");
                     getUsername.requestFocus();
