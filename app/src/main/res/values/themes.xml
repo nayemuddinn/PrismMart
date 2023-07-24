@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.PrismMart" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowBackground">@color/AppTheme</item>
+        <item name="android:statusBarColor">@color/AppTheme</item>
+    </style>
+
+
+    <style name="Theme.PrismMart" parent="Base.Theme.PrismMart" />
+    
+
+</resources>
