@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -19,14 +18,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class sign_up extends AppCompatActivity {
     EditText getUsername, getPassword, getEmail, getPhone;
     Button signUpButton;
     TextView signInoption;
     RadioButton rCustomerButton;
-    String user;
+    String accountType;
+    private FirebaseFirestore fStore;
     private FirebaseAuth auth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +47,11 @@ public class sign_up extends AppCompatActivity {
         signUpButton = findViewById(R.id.signup_button);
         signInoption = findViewById(R.id.signUpPage_signIn);
         getPhone = findViewById(R.id.signupPage_phone);
-        auth = FirebaseAuth.getInstance();
         rCustomerButton = findViewById(R.id.signupPage_customer_rbuttom);
+
+        auth = FirebaseAuth.getInstance();
+        fStore= FirebaseFirestore.getInstance();
+
 
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +106,7 @@ public class sign_up extends AppCompatActivity {
                 }
 
                 if (rCustomerButton.isChecked()) {
-                    user = "User";
+                    accountType = "User";
                     rCustomerButton.setChecked(false);
                 } else {
                     Toast.makeText(getApplicationContext(), "Choosing the customer field is required", Toast.LENGTH_SHORT).show();
@@ -109,8 +119,19 @@ public class sign_up extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Account created successfully", Toast.LENGTH_SHORT).show();
+                            FirebaseUser fUser=auth.getCurrentUser();
+                            DocumentReference documentReference=fStore.collection("User").document(fUser.getUid());
+                            Map<String,Object> userInfo=new HashMap<>();
+                            userInfo.put("Full name",username);
+                            userInfo.put("Email",email);
+                            userInfo.put("Phone",phone);
+                            userInfo.put("AccountType",accountType);
+
+                            documentReference.set(userInfo);
+
+
                         } else
-                            Toast.makeText(getApplicationContext(), "Account created successfully failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Account created failed", Toast.LENGTH_SHORT).show();
 
                     }
                 });
