@@ -32,7 +32,7 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
     TextView signUpoption;
     RadioGroup radioGroup;
     public static String userType;
-    private static boolean loginStatus = false;
+    // private static boolean loginStatus = false;
     private FirebaseAuth mAuth;
     private FirebaseFirestore fStore;
 
@@ -41,7 +41,6 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        Toast.makeText(sign_in.this, "Called onCreate", Toast.LENGTH_SHORT).show();
         getEmail = findViewById(R.id.signinPage_email);
         getPassword = findViewById(R.id.signinPage_password);
         signinButton = findViewById(R.id.signin_button);
@@ -96,7 +95,7 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
                     return;
                 }
 
-                Log.d("Initially", String.valueOf(sign_in.loginStatus));
+
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -104,15 +103,6 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
                             Toast.makeText(sign_in.this, "Success", Toast.LENGTH_SHORT).show();
                             String Uid = mAuth.getCurrentUser().getUid();
                             checkUserValidity(Uid);
-                            Log.d("Called", String.valueOf(loginStatus));
-
-
-                            if (loginStatus) {
-                                startActivity(new Intent(sign_in.this, HomePage_onBoard.class));
-                                finish();
-                            } else
-                                Toast.makeText(sign_in.this, "Wrong Credential 1", Toast.LENGTH_SHORT).show();
-
                         } else
                             Toast.makeText(sign_in.this, "Failed", Toast.LENGTH_SHORT).show();
                     }
@@ -124,23 +114,23 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
 
     }
 
-    public boolean checkUserValidity(String Uid) {
+    public void checkUserValidity(String Uid) {
 
         DocumentReference documentReference = fStore.collection("User").document(Uid);
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String type = documentSnapshot.getString("AccountType");
-                if(type==userType)
-                 loginStatus=true;
-                Log.d("hello", String.valueOf(loginStatus));
-              /*  else
-                    Toast.makeText(sign_in.this, "Wrong credential2", Toast.LENGTH_SHORT).show();*/
+                if (type.equals(userType)) {
+                    startActivity(new Intent(sign_in.this, HomePage_onBoard.class));
+                    finish();
+                }
+                else
+                    Toast.makeText(sign_in.this, "Wrong credential2", Toast.LENGTH_SHORT).show();
 
             }
         });
 
-        return loginStatus;
     }
 
     @Override
