@@ -1,4 +1,4 @@
-package com.example.prismmart.UI;
+package com.example.prismmart.UIAdmin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.prismmart.R;
 
-public class HomePage extends AppCompatActivity {
+public class Admin_homePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homepage);
+        setContentView(R.layout.activity_admin_homepage);
     }
 }

@@ -9,6 +9,8 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,11 +21,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class sign_in extends AppCompatActivity implements View.OnClickListener{
+public class sign_in extends AppCompatActivity implements View.OnClickListener {
+
 
     EditText getEmail, getPassword;
     Button signinButton;
     TextView signUpoption;
+    RadioGroup radioGroup;
+    RadioButton selectedAccountType;
+    String user;
     private FirebaseAuth mAuth;
 
     @Override
@@ -36,6 +42,7 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener{
         getPassword = findViewById(R.id.signinPage_password);
         signinButton = findViewById(R.id.signin_button);
         signUpoption = findViewById(R.id.signinPage_signUp);
+        radioGroup = findViewById(R.id.signinPage_radiogroup);
 
         signinButton.setOnClickListener(this);
         signUpoption.setOnClickListener(this);
@@ -72,15 +79,26 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener{
                     getPassword.requestFocus();
                 }
 
+
+                int id = radioGroup.getCheckedRadioButtonId();
+                if (id == R.id.signinPage_rAdminButton)
+                    user = "Admin";
+                else if (id == R.id.signinPage_rCustomerButton)
+                    user = "User";
+                else {
+                    Toast.makeText(getApplicationContext(), "Choosing the account type is required", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Intent i=new Intent(sign_in.this, HomePage_onBoard.class);
-                                    startActivity(i);
+                            Intent i = new Intent(sign_in.this, HomePage_onBoard.class);
+                            startActivity(i);
                             Toast.makeText(sign_in.this, "Success", Toast.LENGTH_SHORT).show();
-                        }
-                        else
+                        } else
                             Toast.makeText(sign_in.this, "Failed", Toast.LENGTH_SHORT).show();
                     }
                 });

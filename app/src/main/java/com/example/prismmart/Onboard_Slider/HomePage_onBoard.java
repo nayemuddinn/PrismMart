@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.prismmart.Adapter.SliderAdapter;
-import com.example.prismmart.UI.HomePage;
+import com.example.prismmart.UIAdmin.Admin_homePage;
 import com.example.prismmart.R;
 
 public class HomePage_onBoard extends AppCompatActivity {
@@ -46,7 +46,7 @@ public class HomePage_onBoard extends AppCompatActivity {
         letsGo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomePage_onBoard.this, HomePage.class));
+                startActivity(new Intent(HomePage_onBoard.this, Admin_homePage.class));
                 finish();
             }
         });

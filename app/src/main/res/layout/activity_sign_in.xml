@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/white"
     tools:context=".Login.sign_in">
 
 
@@ -48,11 +49,36 @@
         android:textSize="20dp"></EditText>
 
 
+
+        <RadioGroup
+            android:id="@+id/signinPage_radiogroup"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <RadioButton
+                android:id="@+id/signinPage_rAdminButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin"
+                app:buttonTint="@color/AppTheme"></RadioButton>
+
+            <RadioButton
+                android:id="@+id/signinPage_rCustomerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Customer"
+                app:buttonTint="@color/AppTheme"></RadioButton>
+        </RadioGroup>
+
+
+
     <Button
         android:id="@+id/signin_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@color/AppTheme"
         android:text="Sign In"></Button>
 
