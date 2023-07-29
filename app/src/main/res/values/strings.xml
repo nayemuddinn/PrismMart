@@ -8,4 +8,7 @@
     <string name="first_head">Choose your product</string>
     <string name="second_head">Multiple Payment Interface</string>
     <string name="third_head">SeamLess Shopping</string>
+
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
 </resources>

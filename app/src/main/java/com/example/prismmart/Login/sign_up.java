@@ -50,8 +50,7 @@ public class sign_up extends AppCompatActivity {
         rCustomerButton = findViewById(R.id.signupPage_customer_rbuttom);
 
         auth = FirebaseAuth.getInstance();
-        fStore= FirebaseFirestore.getInstance();
-
+        fStore = FirebaseFirestore.getInstance();
 
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
@@ -61,11 +60,6 @@ public class sign_up extends AppCompatActivity {
                 String password = getPassword.getText().toString();
                 String email = getEmail.getText().toString();
                 String phone = getPhone.getText().toString();
-
-                getUsername.setText("");
-                getPassword.setText("");
-                getEmail.setText("");
-                getPhone.setText("");
 
 
                 if (username.isEmpty()) {
@@ -116,13 +110,13 @@ public class sign_up extends AppCompatActivity {
 
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Account created successfully", Toast.LENGTH_SHORT).show();
-                            FirebaseUser fUser=auth.getCurrentUser();
-                            DocumentReference documentReference=fStore.collection("User").document(fUser.getUid());
-                            Map<String,Object> userInfo=new HashMap<>();
-                            userInfo.put("Full name",username);
-                            userInfo.put("Email",email);
-                            userInfo.put("Phone",phone);
-                            userInfo.put("AccountType",accountType);
+                            FirebaseUser fUser = auth.getCurrentUser();
+                            DocumentReference documentReference = fStore.collection("User").document(fUser.getUid());
+                            Map<String, Object> userInfo = new HashMap<>();
+                            userInfo.put("Full name", username);
+                            userInfo.put("Email", email);
+                            userInfo.put("Phone", phone);
+                            userInfo.put("AccountType", accountType);
 
                             documentReference.set(userInfo);
 
@@ -131,6 +125,7 @@ public class sign_up extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Account created failed", Toast.LENGTH_SHORT).show();
 
                     }
+
                 });
             }
         });

@@ -32,7 +32,6 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
     TextView signUpoption;
     RadioGroup radioGroup;
     public static String userType;
-    // private static boolean loginStatus = false;
     private FirebaseAuth mAuth;
     private FirebaseFirestore fStore;
 
@@ -52,6 +51,13 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
 
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+
+
+
+
+
+
+
 
 
         signinButton.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +111,7 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
                             checkUserValidity(Uid);
                         } else
                             Toast.makeText(sign_in.this, "Failed", Toast.LENGTH_SHORT).show();
+
                     }
                 });
             }
@@ -124,8 +131,7 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
                 if (type.equals(userType)) {
                     startActivity(new Intent(sign_in.this, HomePage_onBoard.class));
                     finish();
-                }
-                else
+                } else
                     Toast.makeText(sign_in.this, "Wrong credential2", Toast.LENGTH_SHORT).show();
 
             }

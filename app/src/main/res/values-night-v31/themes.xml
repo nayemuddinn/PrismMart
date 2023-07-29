@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Base.Theme.PrismMart" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
         <item name="android:windowBackground">@color/AppTheme</item>
         <item name="android:statusBarColor">@color/AppTheme</item>
+        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">
+            @color/AppTheme
+        </item>
     </style>
+
+    <style name="nav_Dailog_animation">
+        <item name="android:windowEnterAnimation">@anim/hompage_nav_drawer_slide_in</item>
+        <item name="android:windowExitAnimation">@anim/homepage_nav_drawer_slide_out</item>
+    </style>
+
 </resources>

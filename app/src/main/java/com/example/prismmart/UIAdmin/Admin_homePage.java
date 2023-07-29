@@ -1,4 +1,4 @@
-package com.example.prismmart.UIUser;
+package com.example.prismmart.UIAdmin;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,24 +10,20 @@ import android.os.Bundle;
 import com.example.prismmart.R;
 import com.google.android.material.navigation.NavigationView;
 
-
-public class User_homePage extends AppCompatActivity {
+public class Admin_homePage extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
 
     NavigationView navigationView;
-   Toolbar toolbar;
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_homepage);
+        setContentView(R.layout.activity_admin_homepage);
 
-
-
-        drawerLayout=findViewById(R.id.user_homepage_drawer_layout);
-        navigationView=findViewById(R.id.user_homepage_nav_view);
-        toolbar=findViewById(R.id.user_homepage_toolbar);
+        drawerLayout=findViewById(R.id.admin_homepage_drawer_layout);
+        navigationView=findViewById(R.id.admin_homepage_nav_view);
+        toolbar=findViewById(R.id.admin_homepage_toolbar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -35,7 +31,4 @@ public class User_homePage extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
     }
-
-
-
 }
