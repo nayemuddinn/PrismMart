@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UIAdmin.Admin_homePage"
+            android:name=".Onboard_Slider.UIAdmin.Admin_homePage"
             android:exported="true" />
     </application>
 

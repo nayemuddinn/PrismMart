@@ -1,4 +1,4 @@
-package com.example.prismmart.UIAdmin;
+package com.example.prismmart.Onboard_Slider.UIAdmin;
 
 import androidx.appcompat.app.AppCompatActivity;
 

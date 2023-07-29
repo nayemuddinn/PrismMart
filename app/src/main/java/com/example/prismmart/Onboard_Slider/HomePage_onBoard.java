@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.example.prismmart.Adapter.SliderAdapter;
 import com.example.prismmart.Login.sign_in;
-import com.example.prismmart.UIAdmin.Admin_homePage;
+import com.example.prismmart.Onboard_Slider.UIAdmin.Admin_homePage;
 import com.example.prismmart.R;
 import com.example.prismmart.UIUser.User_homePage;
 
