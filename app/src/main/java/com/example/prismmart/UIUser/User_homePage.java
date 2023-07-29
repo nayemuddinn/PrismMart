@@ -33,7 +33,6 @@ public class User_homePage extends AppCompatActivity {
 
 
 
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open_nav,R.string.close_nav);
