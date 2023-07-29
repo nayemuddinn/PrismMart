@@ -106,11 +106,10 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(sign_in.this, "Success", Toast.LENGTH_SHORT).show();
                             String Uid = mAuth.getCurrentUser().getUid();
                             checkUserValidity(Uid);
                         } else
-                            Toast.makeText(sign_in.this, "Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(sign_in.this, "Wrong credential", Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -129,10 +128,11 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String type = documentSnapshot.getString("AccountType");
                 if (type.equals(userType)) {
+                    Toast.makeText(sign_in.this, "Success", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(sign_in.this, HomePage_onBoard.class));
                     finish();
                 } else
-                    Toast.makeText(sign_in.this, "Wrong credential2", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(sign_in.this, "Wrong credential", Toast.LENGTH_SHORT).show();
 
             }
         });

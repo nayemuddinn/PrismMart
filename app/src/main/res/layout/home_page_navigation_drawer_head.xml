@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="194dp"
     android:background="@drawable/nav_head"
-    android:gravity="bottom"
+    android:gravity="start"
     android:orientation="vertical"
     android:padding="10dp"
     android:theme="@style/Base.Theme.PrismMart">
 
     <ImageView
+        android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/logo_round" />
@@ -16,18 +17,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="Username"
+        android:layout_marginLeft="20dp"
+        android:text="Prism Mart"
         android:textColor="@color/white"
         android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="16dp"
-        android:text="UserType"
-        android:textColor="@color/white"
-        android:textSize="14sp" />
 
 </LinearLayout>
