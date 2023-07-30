@@ -30,7 +30,7 @@ public class Admin_homePage extends AppCompatActivity implements NavigationView.
     NavigationView navigationView;
     Toolbar toolbar;
 
-
+    TextView accountType, accountName;
     FirebaseAuth auth;
 
     @Override
@@ -52,6 +52,14 @@ public class Admin_homePage extends AppCompatActivity implements NavigationView.
 
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+        accountType = headerView.findViewById(R.id.nav_account_type);
+        accountName = headerView.findViewById(R.id.nav_account_name);
+        if (sign_in.userType == "Admin")
+            accountType.setText(sign_in.userType);
+        else
+            accountType.setText("Customer");
+        accountName.setText(sign_in.userName);
 
 
     }
@@ -59,7 +67,7 @@ public class Admin_homePage extends AppCompatActivity implements NavigationView.
     @Override
     public void onBackPressed() {
 
-        if(drawerLayout.isDrawerOpen(GravityCompat.START))
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
             drawerLayout.closeDrawers();
         else {
             Intent intent = new Intent(Intent.ACTION_MAIN);

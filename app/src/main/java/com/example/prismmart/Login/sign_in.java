@@ -32,6 +32,7 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
     TextView signUpoption;
     RadioGroup radioGroup;
     public static String userType;
+    public static String userName;
     private FirebaseAuth mAuth;
     private FirebaseFirestore fStore;
 
@@ -127,6 +128,7 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 String type = documentSnapshot.getString("AccountType");
+                userName = documentSnapshot.getString("Full name");
                 if (type.equals(userType)) {
                     Toast.makeText(sign_in.this, "Success", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(sign_in.this, HomePage_onBoard.class));

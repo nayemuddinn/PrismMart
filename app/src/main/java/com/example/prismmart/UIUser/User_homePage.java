@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class User_homePage extends AppCompatActivity implements NavigationView.O
     NavigationView navigationView;
     Toolbar toolbar;
     FirebaseAuth auth;
+    TextView accountType, accountName;
 
 
     @Override
@@ -48,6 +50,14 @@ public class User_homePage extends AppCompatActivity implements NavigationView.O
 
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
+        View headerView = navigationView.getHeaderView(0);
+        accountType = headerView.findViewById(R.id.nav_account_type);
+        accountName = headerView.findViewById(R.id.nav_account_name);
+        if (sign_in.userType == "Admin")
+            accountType.setText(sign_in.userType);
+        else
+            accountType.setText("Customer");
+        accountName.setText(sign_in.userName);
 
 
     }
