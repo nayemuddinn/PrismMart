@@ -22,7 +22,7 @@ import com.example.prismmart.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Admin_homePage extends AppCompatActivity {
+public class Admin_homePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
 
@@ -40,25 +40,7 @@ public class Admin_homePage extends AppCompatActivity {
         drawerLayout = findViewById(R.id.admin_homepage_drawer_layout);
         navigationView = findViewById(R.id.admin_homepage_nav_view);
         toolbar = findViewById(R.id.admin_homepage_toolbar);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-
-                if(item.getItemId()==R.id.nav_logout)
-                {
-                    Toast.makeText(Admin_homePage.this, "Clicked", Toast.LENGTH_SHORT).show();
-                    auth.signOut();
-                    Intent i = new Intent(Admin_homePage.this, sign_in.class);
-                   // i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(i);
-                    finish();
-                    return true;
-                }
-
-                return false;
-            }
-        });
+        auth = FirebaseAuth.getInstance();
 
 
         setSupportActionBar(toolbar);
@@ -66,6 +48,11 @@ public class Admin_homePage extends AppCompatActivity {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        navigationView.bringToFront();
+        navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     @Override
@@ -77,12 +64,19 @@ public class Admin_homePage extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.nav_logout) {
-
+            Toast.makeText(Admin_homePage.this, "Logged out", Toast.LENGTH_SHORT).show();
+            auth.signOut();
+            Intent i = new Intent(Admin_homePage.this, sign_in.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+            finish();
         }
-        return super.onOptionsItemSelected(item);
+        drawerLayout.closeDrawers();
+        return true;
+
     }
 
 
