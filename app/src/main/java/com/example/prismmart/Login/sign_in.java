@@ -29,7 +29,7 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
 
     EditText getEmail, getPassword;
     Button signinButton;
-    TextView signUpoption;
+    TextView signUpoption, forgotPassword;
     RadioGroup radioGroup;
     public static String userType;
     public static String userName;
@@ -46,19 +46,15 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
         signinButton = findViewById(R.id.signin_button);
         signUpoption = findViewById(R.id.signinPage_signUp);
         radioGroup = findViewById(R.id.signinPage_radiogroup);
+        forgotPassword=findViewById(R.id.signinPage_forgot_password);
 
         signinButton.setOnClickListener(this);
         signUpoption.setOnClickListener(this);
+        forgotPassword.setOnClickListener(this);
+
 
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-
-
-
-
-
-
-
 
 
         signinButton.setOnClickListener(new View.OnClickListener() {
@@ -149,7 +145,10 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
         } else if (view.getId() == R.id.signinPage_signUp) {
             Intent i = new Intent(sign_in.this, sign_up.class);
             startActivity(i);
+        } else if (view.getId() == R.id.signinPage_forgot_password) {
+            Toast.makeText(sign_in.this, "Wii be available soon ", Toast.LENGTH_SHORT).show();
         }
+
 
     }
 }
