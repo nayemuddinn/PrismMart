@@ -34,9 +34,9 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
-        drawerLayout = findViewById(R.id.admin_homepage_drawer_layout);
-        navigationView = findViewById(R.id.admin_homepage_nav_view);
-        toolbar = findViewById(R.id.admin_homepage_toolbar);
+        drawerLayout = findViewById(R.id.homepage_drawer_layout);
+        navigationView = findViewById(R.id.homepage_nav_view);
+        toolbar = findViewById(R.id.homepage_toolbar);
         auth = FirebaseAuth.getInstance();
 
 
