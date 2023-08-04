@@ -145,7 +145,7 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
             Intent i = new Intent(sign_in.this, sign_up.class);
             startActivity(i);
         } else if (view.getId() == R.id.signinPage_forgot_password) {
-            //Forget Password
+            //Forget Password()
             Toast.makeText(sign_in.this, "Wii be available soon ", Toast.LENGTH_SHORT).show();
         }
 
