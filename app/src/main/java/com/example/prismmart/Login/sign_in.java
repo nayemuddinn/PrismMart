@@ -46,7 +46,7 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
         signinButton = findViewById(R.id.signin_button);
         signUpoption = findViewById(R.id.signinPage_signUp);
         radioGroup = findViewById(R.id.signinPage_radiogroup);
-        forgotPassword=findViewById(R.id.signinPage_forgot_password);
+        forgotPassword = findViewById(R.id.signinPage_forgot_password);
 
         signinButton.setOnClickListener(this);
         signUpoption.setOnClickListener(this);

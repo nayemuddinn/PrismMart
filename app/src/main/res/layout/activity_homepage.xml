@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:fitsSystemWindows="true"
-    tools:context=".UIUser.User_homePage"
+    tools:context=".Discarded_classes.UIUser.User_homePage"
     tools:openDrawer="start">
 
     <LinearLayout
@@ -37,8 +37,7 @@
         android:background="@color/white"
         app:headerLayout="@layout/home_page_navigation_drawer_head"
         app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"
-        app:menu="@menu/homepage_navigation_drawer_menu" />
+        app:itemTextColor="@color/black" />
 
     <TextView
         android:layout_width="wrap_content"

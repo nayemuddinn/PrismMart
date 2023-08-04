@@ -1,4 +1,4 @@
-package com.example.prismmart.UIUser;
+package com.example.prismmart.Discarded_classes.UIUser;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -16,12 +16,11 @@ import android.widget.Toast;
 
 import com.example.prismmart.Login.sign_in;
 import com.example.prismmart.R;
-import com.example.prismmart.UIAdmin.Admin_homePage;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class User_homePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class User_homePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;

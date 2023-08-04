@@ -15,7 +15,7 @@
         android:theme="@style/Theme.PrismMart"
         tools:targetApi="31" >
         <activity
-            android:name=".UIUser.User_homePage"
+            android:name=".Discarded_classes.UIUser.User_homePage"
             android:exported="false" />
         <activity
             android:name=".Onboard_Slider.HomePage_onBoard"
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UIAdmin.Admin_homePage"
+            android:name=".Homepage.Homepage"
             android:exported="true" />
     </application>
 

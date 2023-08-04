@@ -94,6 +94,7 @@ public class sign_up extends AppCompatActivity {
                 if (password.length() < 6) {
                     getPassword.setError("Password cannot be less than 6 word");
                     getPassword.requestFocus();
+                    return;
                 }
 
                 if (rCustomerButton.isChecked()) {
@@ -101,6 +102,7 @@ public class sign_up extends AppCompatActivity {
                     rCustomerButton.setChecked(false);
                 } else {
                     Toast.makeText(getApplicationContext(), "Choosing the customer field is required", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
