@@ -10,17 +10,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.prismmart.Model.catagoryModel;
+import com.bumptech.glide.Glide;
+import com.example.prismmart.Model.categoryModel;
 import com.example.prismmart.R;
+import com.google.protobuf.StringValue;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class catagoryListAdapter  extends RecyclerView.Adapter<catagoryListAdapter.ViewHolder> {
+public class categoryListAdapter extends RecyclerView.Adapter<categoryListAdapter.ViewHolder> {
 
     Context c;
-    List<catagoryModel> catagoryModelList;
+    List<categoryModel> catagoryModelList;
 
-    public catagoryListAdapter(Context c, List<catagoryModel> catagoryModelList) {
+    public categoryListAdapter(Context c, List<categoryModel> catagoryModelList) {
         this.c = c;
         this.catagoryModelList = catagoryModelList;
     }
@@ -28,12 +31,15 @@ public class catagoryListAdapter  extends RecyclerView.Adapter<catagoryListAdapt
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       View view= LayoutInflater.from(c).inflate(R.layout.catagory_list_child,parent,false);
+        View view = LayoutInflater.from(c).inflate(R.layout.catagory_list_child, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        Glide.with(c).load(catagoryModelList.get(position).getImage_url()).into(holder.categoryImage);
+        holder.categoryName.setText(String.valueOf(catagoryModelList.get(position).getName()));
 
     }
 
@@ -44,13 +50,14 @@ public class catagoryListAdapter  extends RecyclerView.Adapter<catagoryListAdapt
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView catagoryImage;
-        TextView catagoryName;
+        ImageView categoryImage;
+        TextView categoryName;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            catagoryImage=itemView.findViewById(R.id.cat_img);
-            catagoryName=itemView.findViewById(R.id.cat_name);
+            categoryImage = itemView.findViewById(R.id.cat_img);
+            categoryName = itemView.findViewById(R.id.cat_name);
 
 
         }
