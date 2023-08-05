@@ -55,12 +55,13 @@ public class Homepage_Fragment extends Fragment {
 
 
         List<SlideModel> slideModelList = new ArrayList<>();
-        slideModelList.add(new SlideModel(R.drawable.camera_homepage, "Camera on Sale", ScaleTypes.CENTER_CROP));
 
-        slideModelList.add(new SlideModel(R.drawable.camera_homepage, "Camera on Sale", ScaleTypes.CENTER_CROP));
-        slideModelList.add(new SlideModel(R.drawable.ecommerce_lead_homepage, "Camera on Discount", ScaleTypes.CENTER_CROP));
-        slideModelList.add(new SlideModel(R.drawable.camera_homepage, "90% off", ScaleTypes.CENTER_CROP));
-
+        slideModelList.add(new SlideModel(R.drawable.homepage_sliding_image1, "Welcome to Prism Mart", ScaleTypes.CENTER_CROP));
+        slideModelList.add(new SlideModel(R.drawable.homepage_sliding_image2, "Get Exclusive deal", ScaleTypes.CENTER_CROP));
+        slideModelList.add(new SlideModel(R.drawable.homepage_sliding_image4, "Multiple payment gateway", ScaleTypes.CENTER_CROP));
+        slideModelList.add(new SlideModel(R.drawable.homepage_sliding_image5, "Free delivery", ScaleTypes.CENTER_CROP));
+        slideModelList.add(new SlideModel(R.drawable.homepage_sliding_image3, "Up to 70% off", ScaleTypes.CENTER_CROP));
+        slideModelList.add(new SlideModel(R.drawable.homepage_sliding_image6, "Worldwide Collection", ScaleTypes.CENTER_CROP));
         slider.setImageList(slideModelList);
 
         fstoreCat.collection("Catagory List")
