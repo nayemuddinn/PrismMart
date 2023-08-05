@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.prismmart.Adapter.SliderAdapter;
-import com.example.prismmart.Homepage.Homepage;
+import com.example.prismmart.Homepage.UI.Homepage;
 import com.example.prismmart.R;
 
 public class HomePage_onBoard extends AppCompatActivity {

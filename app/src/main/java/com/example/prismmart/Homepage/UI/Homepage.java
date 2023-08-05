@@ -1,4 +1,4 @@
-package com.example.prismmart.Homepage;
+package com.example.prismmart.Homepage.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.prismmart.Homepage.Fragment.Homepage_Fragment;
 import com.example.prismmart.Login.sign_in;
 import com.example.prismmart.R;
 import com.google.android.material.navigation.NavigationView;
@@ -29,6 +31,7 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
     TextView accountType, accountName;
     FirebaseAuth auth;
 
+    Homepage_Fragment homepageFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,8 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         navigationView = findViewById(R.id.homepage_nav_view);
         toolbar = findViewById(R.id.homepage_toolbar);
         auth = FirebaseAuth.getInstance();
+        homepageFragment=new Homepage_Fragment();
+        loadFragment(homepageFragment);
 
 
 
@@ -67,6 +72,12 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         accountName.setText(sign_in.userName);
 
 
+    }
+
+    private void loadFragment(Homepage_Fragment homepageFragment) {
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.homepage_container,homepageFragment);
+        transaction.commit();
     }
 
     @Override

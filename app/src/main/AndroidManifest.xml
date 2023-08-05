@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Homepage.Homepage"
+            android:name=".Homepage.UI.Homepage"
             android:exported="true" />
     </application>
 
