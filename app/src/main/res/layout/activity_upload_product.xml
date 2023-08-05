@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="8dp"
     tools:context=".Admin_Upload_Product.Upload_Product">
 
 
