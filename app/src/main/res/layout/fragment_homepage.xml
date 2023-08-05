@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Category"
+                android:textColor="@color/black"
                 android:textSize="21sp"
                 android:textStyle="bold" />
 
@@ -70,11 +71,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
 
                     <TextView
                         android:id="@+id/new_product_name"
@@ -82,6 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="9dp"
                         android:text="New Products"
+                        android:textColor="@color/black"
                         android:textSize="21sp"
                         android:textStyle="bold" />
 
@@ -90,7 +94,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/new_product_name"
                         android:layout_marginLeft="9dp"
-                        android:text="We provide best products." />
+                        android:text="We provide best products."
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/newProducts_see_all"
@@ -130,6 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="9dp"
                     android:text="Popular Products"
+                    android:textColor="@color/black"
                     android:textSize="21sp"
                     android:textStyle="bold" />
 
@@ -138,7 +144,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/popular_products"
                     android:layout_marginLeft="9dp"
-                    android:text="We provide best products." />
+                    android:text="We provide best products."
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/popular_see_all"

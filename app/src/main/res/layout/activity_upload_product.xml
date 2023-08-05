@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".Admin_Upload_Product.Upload_Product">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Prism Mart"
+        android:textColor="@color/AppTheme"
+        android:textSize="25dp"></TextView>
+
+
+    <EditText
+        android:id="@+id/upload_product_name"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/AppTheme"
+        android:hint="Product Name"
+        android:textColor="@color/black"></EditText>
+
+    <EditText
+        android:id="@+id/upload_product_catagory"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/AppTheme"
+        android:hint="Product Catagory"
+        android:textColor="@color/black"></EditText>
+
+    <EditText
+        android:id="@+id/upload_product_description"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/AppTheme"
+        android:hint="Product Description"
+        android:textColor="@color/black"></EditText>
+
+    <EditText
+        android:id="@+id/upload_product_price"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/AppTheme"
+        android:hint="Product Price"
+        android:textColor="@color/black"></EditText>
+
+
+    <ImageView
+        android:id="@+id/upload_image_view"
+        android:layout_width="320dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/AppTheme"
+        android:scaleType="fitXY"
+        android:src="@drawable/upload"></ImageView>
+
+    <Button
+        android:id="@+id/upload_choose_productImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/AppTheme"
+        android:text="Choose Image"
+        android:textColor="@color/white"></Button>
+
+    <Button
+        android:id="@+id/upload_save_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/AppTheme"
+        android:text="Save Product"
+        android:textColor="@color/white"></Button>
+
+
+</LinearLayout>

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.prismmart.Admin_Upload_Product.Upload_Product;
 import com.example.prismmart.Homepage.Fragment.Homepage_Fragment;
 import com.example.prismmart.Login.sign_in;
 import com.example.prismmart.R;
@@ -62,9 +63,12 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
 
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
+
         View headerView = navigationView.getHeaderView(0);
         accountType = headerView.findViewById(R.id.nav_account_type);
         accountName = headerView.findViewById(R.id.nav_account_name);
+
+
         if (sign_in.userType == "Admin")
             accountType.setText(sign_in.userType);
         else
@@ -100,6 +104,13 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
             Toast.makeText(Homepage.this, "Logged out", Toast.LENGTH_SHORT).show();
             auth.signOut();
             Intent i = new Intent(Homepage.this, sign_in.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+            finish();
+        }
+        else if(item.getItemId()==R.id.nav_add_product)
+        {
+            Intent i = new Intent(Homepage.this, Upload_Product.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
             finish();
