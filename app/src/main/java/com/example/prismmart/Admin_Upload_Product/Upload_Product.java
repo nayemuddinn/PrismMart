@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.prismmart.Model.AllProduct;
 import com.example.prismmart.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -63,10 +62,10 @@ public class Upload_Product extends AppCompatActivity {
         saveProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = productName.getText().toString();
-                String category = productCategory.getText().toString();
-                String description = productDescription.getText().toString();
-                String price = productPrice.getText().toString();
+                String name = productName.getText().toString().trim();
+                String category = productCategory.getText().toString().trim();
+                String description = productDescription.getText().toString().trim();
+                String price = productPrice.getText().toString().trim();
 
                 String key = System.currentTimeMillis() + "." + getFileExtention(imageUri);
                 StorageReference ref = storageReference.child(key);
@@ -84,11 +83,12 @@ public class Upload_Product extends AppCompatActivity {
 
                         DocumentReference documentReference = fStore.collection("All Product").document(category.toString() + key.toString());
                         Map<String, Object> product = new HashMap<>();
-                        product.put("Product name", name);
-                        product.put("Product category", category);
-                        product.put("Product description", description);
-                        product.put("Product Price", price);
-                        product.put("Product Image", downloadUrL.toString());
+
+                        product.put("productImage", downloadUrL.toString());
+                        product.put("productPrice", price);
+                        product.put("productCategory", category);
+                        product.put("productDescription", description);
+                        product.put("productName", name);
                         documentReference.set(product);
 
                     }
@@ -131,5 +131,6 @@ public class Upload_Product extends AppCompatActivity {
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(imageuri));
     }
+
 
 }

@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,12 +14,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.prismmart.Adapter.categoryListAdapter;
+import com.example.prismmart.Adapter.popularProductAdapter;
 import com.example.prismmart.Model.categoryModel;
+import com.example.prismmart.Model.popularProductModel;
 import com.example.prismmart.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,8 +35,10 @@ import java.util.List;
 
 public class Homepage_Fragment extends Fragment {
 
-    RecyclerView categoryRecycleView;
+    RecyclerView categoryRecycleView, popularProductRecycleView;
     categoryListAdapter categoryAdapter;
+    popularProductAdapter popularProductAdapter;
+    List<popularProductModel> popularProductList;
     List<categoryModel> categoryList;
     FirebaseFirestore fstoreCat;
 
@@ -49,6 +55,7 @@ public class Homepage_Fragment extends Fragment {
 
         ImageSlider slider = view.findViewById(R.id.image_slider);
         categoryRecycleView = view.findViewById(R.id.recycle_category);
+        popularProductRecycleView = view.findViewById(R.id.popular_recycle);
 
 
         fstoreCat = FirebaseFirestore.getInstance();
@@ -78,17 +85,40 @@ public class Homepage_Fragment extends Fragment {
                             }
                         } else {
 
+
+                        }
+                    }
+                });
+
+        fstoreCat.collection("All Product")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                popularProductModel popularProduct = document.toObject(com.example.prismmart.Model.popularProductModel.class);
+                                popularProductList.add(popularProduct);
+                                popularProductAdapter.notifyDataSetChanged();
+                            }
+                        } else {
+
                         }
                     }
                 });
 
 
         categoryRecycleView.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        popularProductRecycleView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
 
         categoryList = new ArrayList<>();
         categoryAdapter = new categoryListAdapter(getActivity(), categoryList);
-        categoryRecycleView.setAdapter(categoryAdapter);
 
+        popularProductList = new ArrayList<>();
+        popularProductAdapter = new popularProductAdapter(getActivity(), popularProductList);
+        categoryRecycleView.setAdapter(categoryAdapter);
+        popularProductRecycleView.setAdapter(popularProductAdapter);
 
 
         return view;

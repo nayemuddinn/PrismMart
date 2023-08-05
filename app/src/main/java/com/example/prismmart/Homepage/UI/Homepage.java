@@ -117,9 +117,7 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         else if(item.getItemId()==R.id.nav_add_product)
         {
             Intent i = new Intent(Homepage.this, Upload_Product.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
-            finish();
         }
         drawerLayout.closeDrawers();
         return true;

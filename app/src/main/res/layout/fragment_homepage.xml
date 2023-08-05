@@ -100,10 +100,10 @@
             </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/popular_rec"
+                android:id="@+id/popular_recycle"
                 android:layout_width="wrap_content"
+                android:background="@color/white"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_margin="7dp"
                 android:layout_marginTop="6dp"
                 android:padding="5dp" />
