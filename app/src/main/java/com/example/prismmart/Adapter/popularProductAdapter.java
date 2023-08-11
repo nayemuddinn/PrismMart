@@ -41,7 +41,6 @@ public class popularProductAdapter extends RecyclerView.Adapter<popularProductAd
 
         Glide.with(c).load(popularProductModelList.get(position).getProductImage()).into(holder.popularProductImage);
         holder.popularProductName.setText(String.valueOf(popularProductModelList.get(position).getProductName()));
-        holder.popularProductPrice.setText(String.valueOf(popularProductModelList.get(position).getProductPrice())+"Taka");
     }
 
     @Override
@@ -51,14 +50,13 @@ public class popularProductAdapter extends RecyclerView.Adapter<popularProductAd
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView popularProductImage;
-        TextView popularProductName, popularProductPrice;
+        TextView popularProductName;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             popularProductImage = itemView.findViewById(R.id.popular_products_image);
             popularProductName = itemView.findViewById(R.id.popular_products_name);
-            popularProductPrice = itemView.findViewById(R.id.popular_products_price);
 
         }
     }
