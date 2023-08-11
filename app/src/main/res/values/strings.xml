@@ -17,9 +17,9 @@
 
     <string-array name="category_name">
         <item>Grocery</item>
-        <item>Home Appliance </item>
-        <item>SmartPhone </item>
-        <item>Medicine </item>
+        <item>Home Appliance</item>
+        <item>SmartPhone</item>
+        <item>Medicine</item>
         <item>Men</item>
         <item>Women</item>
         <item>Kids</item>
