@@ -37,5 +37,34 @@
         <item>Education</item>
         <item>Books and Stationery</item>
         <item>Personal Care</item>
+        <item>Entertainment</item>
+    </string-array>
+
+    <string-array name="product_Unit_name">
+        <item>Liter</item>
+        <item>Milliliter</item>
+        <item>Kilogram</item>
+        <item>Piece</item>
+        <item>Meter</item>
+        <item>Centimeter </item>
+        <item>Inch</item>
+        <item>Foot</item>
+        <item>Square meter</item>
+        <item>Square kilometer</item>
+        <item>Cubic meter</item>
+        <item>Cubic centimeter</item>
+        <item>Gram </item>
+        <item>Pound</item>
+        <item>Second</item>
+        <item>Minute</item>
+        <item>Hour</item>
+        <item>Month</item>
+        <item>Year</item>
+        <item>Week</item>
+        <item>Day</item>
+        <item>Dozen</item>
+        <item>Pair</item>
+        <item>Pack</item>
+        <item>Box</item>
     </string-array>
 </resources>

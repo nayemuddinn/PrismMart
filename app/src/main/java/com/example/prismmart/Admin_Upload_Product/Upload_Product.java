@@ -18,6 +18,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.prismmart.Homepage.UI.Homepage;
+import com.example.prismmart.Login.sign_in;
 import com.example.prismmart.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,10 +41,12 @@ public class Upload_Product extends AppCompatActivity {
     Uri imageUri;
     Button saveProduct;
     ImageView loadImage;
-    EditText productName, productDescription, productPrice;
+    EditText productName, productDescription, productPrice, productID;
     AutoCompleteTextView productCategory;
-    ArrayAdapter<String>product_cat_adapter;
-    String [] categoryName;
+    AutoCompleteTextView productUnit;
+    ArrayAdapter<String> product_cat_adapter;
+    ArrayAdapter<String> product_unit_adapter;
+    String[] categoryName, Unitname;
     private FirebaseFirestore fStore;
     StorageReference storageReference;
     private static final int image_request = 1;
@@ -58,14 +62,22 @@ public class Upload_Product extends AppCompatActivity {
         loadImage = findViewById(R.id.upload_image_view);
         productName = findViewById(R.id.upload_product_name);
         productCategory = findViewById(R.id.upload_product_catagory);
+        productUnit = findViewById(R.id.upload_product_unit_type);
         productDescription = findViewById(R.id.upload_product_description);
         productPrice = findViewById(R.id.upload_product_price);
+        productID = findViewById(R.id.upload_product_ID);
 
-       //category List autoCompleteTextview
-        categoryName=getResources().getStringArray(R.array.category_name);
-        product_cat_adapter=new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,categoryName);
+        //category List autoCompleteTextview
+        categoryName = getResources().getStringArray(R.array.category_name);
+        product_cat_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, categoryName);
         productCategory.setThreshold(1);
         productCategory.setAdapter(product_cat_adapter);
+
+        //Product Unit autoCompleteTextView
+        Unitname = getResources().getStringArray(R.array.product_Unit_name);
+        product_unit_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, Unitname);
+        productUnit.setThreshold(1);
+        productUnit.setAdapter(product_unit_adapter);
 
 
         fStore = FirebaseFirestore.getInstance();
@@ -78,6 +90,8 @@ public class Upload_Product extends AppCompatActivity {
                 String category = productCategory.getText().toString().trim();
                 String description = productDescription.getText().toString().trim();
                 String price = productPrice.getText().toString().trim();
+                String unit = productUnit.getText().toString().trim();
+                String ID = productID.getText().toString().trim();
 
                 String key = System.currentTimeMillis() + "." + getFileExtention(imageUri);
                 StorageReference ref = storageReference.child(key);
@@ -101,6 +115,8 @@ public class Upload_Product extends AppCompatActivity {
                         product.put("productCategory", category);
                         product.put("productDescription", description);
                         product.put("productName", name);
+                        product.put("productUnit", unit);
+                        product.put("productID", ID);
                         documentReference.set(product);
 
                     }
@@ -144,5 +160,11 @@ public class Upload_Product extends AppCompatActivity {
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(imageuri));
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(Upload_Product.this, Homepage.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+        finish();
+    }
 }

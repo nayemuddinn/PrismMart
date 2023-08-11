@@ -12,9 +12,9 @@
 
 
     <LinearLayout
-        android:layout_marginRight="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="25dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -24,15 +24,23 @@
 
 
         <TextView
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="Prism Mart"
             android:textColor="@color/AppTheme"
             android:textSize="25dp"></TextView>
     </LinearLayout>
 
+
+    <EditText
+        android:id="@+id/upload_product_ID"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/AppTheme"
+        android:hint="Product ID"
+        android:textColor="@color/black"></EditText>
 
     <EditText
         android:id="@+id/upload_product_name"
@@ -48,6 +56,12 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:hint="Product Catagory"></AutoCompleteTextView>
+
+    <AutoCompleteTextView
+        android:id="@+id/upload_product_unit_type"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:hint="Product Unit Type"></AutoCompleteTextView>
 
     <EditText
         android:id="@+id/upload_product_description"
