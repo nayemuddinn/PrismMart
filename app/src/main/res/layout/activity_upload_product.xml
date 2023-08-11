@@ -7,17 +7,31 @@
     android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="8dp"
+    android:padding="5dp"
     tools:context=".Admin_Upload_Product.Upload_Product">
 
 
-    <TextView
+    <LinearLayout
+        android:layout_marginRight="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="Prism Mart"
-        android:textColor="@color/AppTheme"
-        android:textSize="25dp"></TextView>
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_round_blue"></ImageView>
+
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Prism Mart"
+            android:textColor="@color/AppTheme"
+            android:textSize="25dp"></TextView>
+    </LinearLayout>
 
 
     <EditText
@@ -28,13 +42,12 @@
         android:hint="Product Name"
         android:textColor="@color/black"></EditText>
 
-    <EditText
+
+    <AutoCompleteTextView
         android:id="@+id/upload_product_catagory"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/AppTheme"
-        android:hint="Product Catagory"
-        android:textColor="@color/black"></EditText>
+        android:hint="Product Catagory"></AutoCompleteTextView>
 
     <EditText
         android:id="@+id/upload_product_description"
@@ -62,14 +75,6 @@
         android:scaleType="fitXY"
         android:src="@drawable/upload"></ImageView>
 
-    <Button
-        android:id="@+id/upload_choose_productImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="@color/AppTheme"
-        android:text="Choose Image"
-        android:textColor="@color/white"></Button>
 
     <Button
         android:id="@+id/upload_save_product"

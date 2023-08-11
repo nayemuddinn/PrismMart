@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,20 +30,24 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Upload_Product extends AppCompatActivity {
 
     Uri imageUri;
-    Button saveProduct, chooseImage;
+    Button saveProduct;
     ImageView loadImage;
-    EditText productName, productCategory, productDescription, productPrice;
+    EditText productName, productDescription, productPrice;
+    AutoCompleteTextView productCategory;
+    ArrayAdapter<String>product_cat_adapter;
+    String [] categoryName;
     private FirebaseFirestore fStore;
     StorageReference storageReference;
-    StorageTask storageTask;
     private static final int image_request = 1;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +55,17 @@ public class Upload_Product extends AppCompatActivity {
 
 
         saveProduct = findViewById(R.id.upload_save_product);
-        chooseImage = findViewById(R.id.upload_choose_productImage);
         loadImage = findViewById(R.id.upload_image_view);
         productName = findViewById(R.id.upload_product_name);
         productCategory = findViewById(R.id.upload_product_catagory);
         productDescription = findViewById(R.id.upload_product_description);
         productPrice = findViewById(R.id.upload_product_price);
+
+       //category List autoCompleteTextview
+        categoryName=getResources().getStringArray(R.array.category_name);
+        product_cat_adapter=new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line,categoryName);
+        productCategory.setThreshold(1);
+        productCategory.setAdapter(product_cat_adapter);
 
 
         fStore = FirebaseFirestore.getInstance();
@@ -103,7 +115,7 @@ public class Upload_Product extends AppCompatActivity {
             }
         });
 
-        chooseImage.setOnClickListener(new View.OnClickListener() {
+        loadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
