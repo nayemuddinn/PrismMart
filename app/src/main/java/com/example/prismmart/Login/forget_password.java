@@ -22,7 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class forget_password extends AppCompatActivity {
     //Declaration
     Button btnReset;
-    Button btnBack;
     EditText edtEmail;
     FirebaseAuth mAuth;
 
@@ -32,7 +31,6 @@ public class forget_password extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
         //initialization
-        btnBack = (Button) findViewById(R.id.back_button);
         btnReset = (Button) findViewById(R.id.reset_button);
         edtEmail = findViewById(R.id.forget_password_Page_email);
 
@@ -47,7 +45,7 @@ public class forget_password extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(forget_password.this, "send mail", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(forget_password.this, "Password reset link sent to your email", Toast.LENGTH_SHORT).show();
 
                         } else {
                             Toast.makeText(forget_password.this, "Failed", Toast.LENGTH_SHORT).show();
@@ -59,12 +57,6 @@ public class forget_password extends AppCompatActivity {
 
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(forget_password.this, sign_in.class);
-                startActivity(intent);
-            }
-        });
+
     }
 }
