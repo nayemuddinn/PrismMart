@@ -13,4 +13,57 @@
     <string name="close_nav">Close Navigation Drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string-array name="category_name">
+        <item>Grocery</item>
+        <item>Home Appliance</item>
+        <item>SmartPhone</item>
+        <item>Medicine</item>
+        <item>Men</item>
+        <item>Women</item>
+        <item>Kids</item>
+        <item>Shoes</item>
+        <item>Watch</item>
+        <item>Toy</item>
+        <item>Electronics</item>
+        <item>Computer Accessories</item>
+        <item>Vegetable</item>
+        <item>Laptop</item>
+        <item>Furniture</item>
+        <item>Kitchen</item>
+        <item>Home Decoration</item>
+        <item>Fruits</item>
+        <item>Books and Stationery</item>
+        <item>Personal Care</item>
+        <item>Entertainment</item>
+    </string-array>
+
+    <string-array name="product_Unit_name">
+        <item>Liter</item>
+        <item>Milliliter</item>
+        <item>Kilogram</item>
+        <item>Piece</item>
+        <item>Meter</item>
+        <item>Centimeter </item>
+        <item>Inch</item>
+        <item>Foot</item>
+        <item>Square meter</item>
+        <item>Square kilometer</item>
+        <item>Cubic meter</item>
+        <item>Cubic centimeter</item>
+        <item>Gram </item>
+        <item>Pound</item>
+        <item>Second</item>
+        <item>Minute</item>
+        <item>Hour</item>
+        <item>Month</item>
+        <item>Year</item>
+        <item>Week</item>
+        <item>Day</item>
+        <item>Dozen</item>
+        <item>Pair</item>
+        <item>Pack</item>
+        <item>Box</item>
+    </string-array>
 </resources>

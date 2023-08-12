@@ -29,7 +29,6 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Homepage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
-
     DrawerLayout drawerLayout;
 
     NavigationView navigationView;
@@ -39,6 +38,7 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
     FirebaseAuth auth;
 
     Homepage_Fragment homepageFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,15 +48,14 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         navigationView = findViewById(R.id.homepage_nav_view);
         toolbar = findViewById(R.id.homepage_toolbar);
         auth = FirebaseAuth.getInstance();
-        homepageFragment=new Homepage_Fragment();
+        homepageFragment = new Homepage_Fragment();
         loadFragment(homepageFragment);
-
 
 
         //setting navigation drawer menu
         navigationView.getMenu().clear();
-        if(sign_in.userType=="Admin")
-        navigationView.inflateMenu(R.menu.admin_homepage_navigation_drawer_menu);
+        if (sign_in.userType == "Admin")
+            navigationView.inflateMenu(R.menu.admin_homepage_navigation_drawer_menu);
         else
             navigationView.inflateMenu(R.menu.user_homepage_navigation_drawer_menu);
 
@@ -85,8 +84,8 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
     }
 
     private void loadFragment(Homepage_Fragment homepageFragment) {
-        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.homepage_container,homepageFragment);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.homepage_container, homepageFragment);
         transaction.commit();
     }
 
@@ -113,11 +112,11 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
             finish();
-        }
-        else if(item.getItemId()==R.id.nav_add_product)
-        {
+        } else if (item.getItemId() == R.id.nav_add_product) {
             Intent i = new Intent(Homepage.this, Upload_Product.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
+            finish();
         }
         drawerLayout.closeDrawers();
         return true;

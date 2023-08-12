@@ -7,17 +7,21 @@ public class popularProductModel {
     String productCategory;
     String productDescription;
     String productName;
+    String productUnit;
+    String productID;
 
 
     public popularProductModel() {
     }
 
-    public popularProductModel(String productImage, String productPrice, String productCategory, String productDescription, String productName) {
+    public popularProductModel(String productImage, String productPrice, String productCategory, String productDescription, String productName, String productUnit, String productID) {
         this.productImage = productImage;
         this.productPrice = productPrice;
         this.productCategory = productCategory;
         this.productDescription = productDescription;
         this.productName = productName;
+        this.productUnit = productUnit;
+        this.productID = productID;
     }
 
     public String getProductImage() {
@@ -58,5 +62,21 @@ public class popularProductModel {
 
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    public String getProductUnit() {
+        return productUnit;
+    }
+
+    public void setProductUnit(String productUnit) {
+        this.productUnit = productUnit;
+    }
+
+    public String getProductID() {
+        return productID;
+    }
+
+    public void setProductID(String productID) {
+        this.productID = productID;
     }
 }
