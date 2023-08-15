@@ -15,7 +15,16 @@
         android:theme="@style/Theme.PrismMart"
         tools:targetApi="31">
         <activity
+            android:name=".Homepage.UI.Design_info"
+            android:exported="false" />
+        <activity
+            android:name=".Homepage.UI.Details_info"
+            android:exported="false" />
+        <activity
             android:name=".Homepage.UI.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Homepage.UI.Details_Info"
             android:exported="false" />
         <activity
             android:name=".Login.forget_password"
