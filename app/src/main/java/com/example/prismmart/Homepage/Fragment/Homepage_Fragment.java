@@ -2,6 +2,7 @@ package com.example.prismmart.Homepage.Fragment;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -21,6 +23,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.prismmart.Adapter.categoryListAdapter;
 import com.example.prismmart.Adapter.popularProductAdapter;
+import com.example.prismmart.Homepage.UI.seeAllProduct;
 import com.example.prismmart.Model.categoryModel;
 import com.example.prismmart.Model.popularProductModel;
 import com.example.prismmart.R;
@@ -33,7 +36,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Homepage_Fragment extends Fragment {
+public class Homepage_Fragment extends Fragment implements View.OnClickListener {
 
     RecyclerView categoryRecycleView, popularProductRecycleView;
     categoryListAdapter categoryAdapter;
@@ -41,6 +44,7 @@ public class Homepage_Fragment extends Fragment {
     List<popularProductModel> popularProductList;
     List<categoryModel> categoryList;
     FirebaseFirestore fstoreCat;
+    TextView seeAll;
 
     public Homepage_Fragment() {
         // Required empty public constructor
@@ -56,10 +60,12 @@ public class Homepage_Fragment extends Fragment {
         ImageSlider slider = view.findViewById(R.id.image_slider);
         categoryRecycleView = view.findViewById(R.id.recycle_category);
         popularProductRecycleView = view.findViewById(R.id.popular_recycle);
+        seeAll=view.findViewById(R.id.homepage_popular_see_all);
 
 
         fstoreCat = FirebaseFirestore.getInstance();
 
+        seeAll.setOnClickListener(this);
 
         List<SlideModel> slideModelList = new ArrayList<>();
 
@@ -122,5 +128,14 @@ public class Homepage_Fragment extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+
+        if(view.getId()==R.id.homepage_popular_see_all) {
+            Intent i=new Intent(getActivity(),seeAllProduct.class);
+            startActivity(i);
+        }
     }
 }
