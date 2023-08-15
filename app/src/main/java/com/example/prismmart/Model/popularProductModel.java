@@ -1,6 +1,8 @@
 package com.example.prismmart.Model;
 
-public class popularProductModel {
+import java.io.Serializable;
+
+public class popularProductModel implements Serializable {
 
     String productImage;
     String productPrice;
