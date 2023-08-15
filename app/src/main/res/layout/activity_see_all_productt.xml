@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Homepage.UI.seeAllProduct">
+
+    <SearchView
+        android:id="@+id/seeAll_search"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/white"
+        android:layout_height="wrap_content"
+        android:queryHint="Search Product"></SearchView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/see_all_recycle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        ></androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

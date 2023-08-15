@@ -27,9 +27,17 @@ public class popularProductAdapter extends RecyclerView.Adapter<popularProductAd
     Context c;
     List<popularProductModel> popularProductModelList;
 
+
     public popularProductAdapter(Context c, List<popularProductModel> popularProductModelList) {
         this.c = c;
         this.popularProductModelList = popularProductModelList;
+    }
+
+
+    public void setFilteredList(List<popularProductModel>popularProductModelList)
+    {
+        this.popularProductModelList=popularProductModelList;
+        notifyDataSetChanged();
     }
 
     @NonNull

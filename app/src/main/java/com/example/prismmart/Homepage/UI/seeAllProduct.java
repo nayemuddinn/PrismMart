@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.prismmart.Adapter.popularProductAdapter;
 import com.example.prismmart.Model.popularProductModel;
@@ -24,6 +26,7 @@ import java.util.List;
 
 public class seeAllProduct extends AppCompatActivity {
 
+    SearchView searchView;
     RecyclerView AllproductrecyclerView;
     popularProductAdapter adapter;
     List<popularProductModel> popularProductList;
@@ -36,9 +39,24 @@ public class seeAllProduct extends AppCompatActivity {
 
 
         AllproductrecyclerView = findViewById(R.id.see_all_recycle);
+        searchView = findViewById(R.id.seeAll_search);
         fstore = FirebaseFirestore.getInstance();
 
         popularProductList = new ArrayList<>();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                filterList(s);
+                return true;
+            }
+        });
+
 
         fstore.collection("All Product").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -60,5 +78,19 @@ public class seeAllProduct extends AppCompatActivity {
         AllproductrecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
         adapter = new popularProductAdapter(getApplicationContext(), popularProductList);
         AllproductrecyclerView.setAdapter(adapter);
+    }
+
+    private void filterList(String s) {
+        List<popularProductModel> filterList = new ArrayList<>();
+        for (popularProductModel product : popularProductList) {
+            if (product.getProductName().toLowerCase().contains(s.toLowerCase())) {
+                filterList.add(product);
+            }
+        }
+        if (filterList.isEmpty())
+            Toast.makeText(getApplicationContext(), "Product Not Found", Toast.LENGTH_SHORT).show();
+        else
+            adapter.setFilteredList(popularProductList);
+
     }
 }
