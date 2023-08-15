@@ -1,6 +1,9 @@
 package com.example.prismmart.Adapter;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.prismmart.Homepage.UI.productInfo;
 import com.example.prismmart.Model.popularProductModel;
 import com.example.prismmart.R;
 
@@ -41,6 +45,14 @@ public class popularProductAdapter extends RecyclerView.Adapter<popularProductAd
 
         Glide.with(c).load(popularProductModelList.get(position).getProductImage()).into(holder.popularProductImage);
         holder.popularProductName.setText(String.valueOf(popularProductModelList.get(position).getProductName()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(c,productInfo.class);
+                c.startActivity(i);
+            }
+        });
     }
 
     @Override
