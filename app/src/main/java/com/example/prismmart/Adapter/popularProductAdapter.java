@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +21,8 @@ import com.example.prismmart.Homepage.UI.productInfo;
 import com.example.prismmart.Model.popularProductModel;
 import com.example.prismmart.R;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class popularProductAdapter extends RecyclerView.Adapter<popularProductAdapter.ViewHolder> {
@@ -26,19 +30,15 @@ public class popularProductAdapter extends RecyclerView.Adapter<popularProductAd
 
     Context c;
     List<popularProductModel> popularProductModelList;
+    List<popularProductModel> popularProductModelListAll;
 
 
     public popularProductAdapter(Context c, List<popularProductModel> popularProductModelList) {
         this.c = c;
         this.popularProductModelList = popularProductModelList;
+        this.popularProductModelListAll = popularProductModelList;
     }
 
-
-    public void setFilteredList(List<popularProductModel>popularProductModelList)
-    {
-        this.popularProductModelList=popularProductModelList;
-        notifyDataSetChanged();
-    }
 
     @NonNull
     @Override
@@ -57,8 +57,8 @@ public class popularProductAdapter extends RecyclerView.Adapter<popularProductAd
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(c,productInfo.class);
-                i.putExtra("productInfo",popularProductModelList.get(position));
+                Intent i = new Intent(c, productInfo.class);
+                i.putExtra("productInfo", popularProductModelList.get(position));
                 c.startActivity(i);
             }
         });
@@ -67,6 +67,22 @@ public class popularProductAdapter extends RecyclerView.Adapter<popularProductAd
     @Override
     public int getItemCount() {
         return popularProductModelList.size();
+    }
+
+
+    public void getFilter(String charSequence) {
+        List<popularProductModel> filteredList = new ArrayList<>();
+
+
+        for (popularProductModel product : popularProductModelListAll) {
+            if (product.getProductName().toString().toLowerCase().contains(charSequence.toString().toLowerCase())) {
+                filteredList.add(product);
+            }
+        }
+
+        popularProductModelList = filteredList;
+        notifyDataSetChanged();
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

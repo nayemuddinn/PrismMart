@@ -21,15 +21,6 @@
             android:name=".Homepage.UI.productInfo"
             android:exported="false" />
         <activity
-            android:name=".Homepage.UI.Details_info"
-            android:exported="false" />
-        <activity
-            android:name=".Homepage.UI.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Homepage.UI.Details_Info"
-            android:exported="false" />
-        <activity
             android:name=".Login.forget_password"
             android:exported="false" />
         <activity

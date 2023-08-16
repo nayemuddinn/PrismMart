@@ -60,7 +60,7 @@ public class Homepage_Fragment extends Fragment implements View.OnClickListener 
         ImageSlider slider = view.findViewById(R.id.image_slider);
         categoryRecycleView = view.findViewById(R.id.recycle_category);
         popularProductRecycleView = view.findViewById(R.id.popular_recycle);
-        seeAll=view.findViewById(R.id.homepage_popular_see_all);
+        seeAll = view.findViewById(R.id.homepage_popular_see_all);
 
 
         fstoreCat = FirebaseFirestore.getInstance();
@@ -133,9 +133,10 @@ public class Homepage_Fragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View view) {
 
-        if(view.getId()==R.id.homepage_popular_see_all) {
-            Intent i=new Intent(getActivity(),seeAllProduct.class);
+        if (view.getId() == R.id.homepage_popular_see_all) {
+            Intent i = new Intent(getActivity(), seeAllProduct.class);
             startActivity(i);
+
         }
     }
 }

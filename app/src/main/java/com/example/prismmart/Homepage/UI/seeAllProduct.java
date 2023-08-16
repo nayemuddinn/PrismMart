@@ -4,11 +4,13 @@ import static android.app.PendingIntent.getActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -44,7 +46,7 @@ public class seeAllProduct extends AppCompatActivity {
 
         popularProductList = new ArrayList<>();
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+ /*       searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 return false;
@@ -52,11 +54,11 @@ public class seeAllProduct extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String s) {
-                filterList(s);
-                return true;
+               adapter.getFilter().filter(s);
+                return false;
             }
         });
-
+*/
 
         fstore.collection("All Product").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -76,21 +78,23 @@ public class seeAllProduct extends AppCompatActivity {
 
 
         AllproductrecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
-        adapter = new popularProductAdapter(getApplicationContext(), popularProductList);
+        adapter = new popularProductAdapter(this, popularProductList);
         AllproductrecyclerView.setAdapter(adapter);
-    }
 
-    private void filterList(String s) {
-        List<popularProductModel> filterList = new ArrayList<>();
-        for (popularProductModel product : popularProductList) {
-            if (product.getProductName().toLowerCase().contains(s.toLowerCase())) {
-                filterList.add(product);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
             }
-        }
-        if (filterList.isEmpty())
-            Toast.makeText(getApplicationContext(), "Product Not Found", Toast.LENGTH_SHORT).show();
-        else
-            adapter.setFilteredList(popularProductList);
 
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.getFilter(s);
+                return true;
+            }
+        });
     }
+
+
+
 }
