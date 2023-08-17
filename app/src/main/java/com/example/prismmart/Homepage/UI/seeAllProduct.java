@@ -46,35 +46,44 @@ public class seeAllProduct extends AppCompatActivity {
 
         popularProductList = new ArrayList<>();
 
- /*       searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String s) {
-               adapter.getFilter().filter(s);
-                return false;
-            }
-        });
-*/
+        String type = getIntent().getStringExtra("type").toString();
 
-        fstore.collection("All Product").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
+        if (type.contains("All Product")) {
+            fstore.collection("All Product").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
 
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        popularProductModel popularProduct = document.toObject(com.example.prismmart.Model.popularProductModel.class);
-                        popularProductList.add(popularProduct);
-                        adapter.notifyDataSetChanged();
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            popularProductModel popularProduct = document.toObject(com.example.prismmart.Model.popularProductModel.class);
+                            popularProductList.add(popularProduct);
+                            adapter.notifyDataSetChanged();
+                        }
+                    } else {
+
                     }
-                } else {
-
                 }
-            }
-        });
+            });
+        } else {
+
+            fstore.collection("All Product").whereEqualTo("productCategory",type).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful()) {
+
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            popularProductModel popularProduct = document.toObject(com.example.prismmart.Model.popularProductModel.class);
+                            popularProductList.add(popularProduct);
+                            adapter.notifyDataSetChanged();
+                        }
+                    } else {
+
+                    }
+                }
+            });
+
+        }
 
 
         AllproductrecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
@@ -94,7 +103,6 @@ public class seeAllProduct extends AppCompatActivity {
             }
         });
     }
-
 
 
 }

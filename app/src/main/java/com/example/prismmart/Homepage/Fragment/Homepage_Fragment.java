@@ -135,6 +135,7 @@ public class Homepage_Fragment extends Fragment implements View.OnClickListener 
 
         if (view.getId() == R.id.homepage_popular_see_all) {
             Intent i = new Intent(getActivity(), seeAllProduct.class);
+            i.putExtra("type","All Product");
             startActivity(i);
 
         }

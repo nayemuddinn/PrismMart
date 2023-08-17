@@ -1,6 +1,7 @@
 package com.example.prismmart.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.prismmart.Homepage.UI.seeAllProduct;
 import com.example.prismmart.Model.categoryModel;
 import com.example.prismmart.R;
 import com.google.protobuf.StringValue;
@@ -40,6 +42,15 @@ public class categoryListAdapter extends RecyclerView.Adapter<categoryListAdapte
 
         Glide.with(c).load(catagoryModelList.get(position).getImage_url()).into(holder.categoryImage);
         holder.categoryName.setText(String.valueOf(catagoryModelList.get(position).getName()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(c, seeAllProduct.class);
+                i.putExtra("type", catagoryModelList.get(position).getName());
+                c.startActivity(i);
+            }
+        });
 
     }
 
