@@ -28,8 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class sign_in extends AppCompatActivity implements View.OnClickListener {
 
     EditText getEmail, getPassword;
-    Button signinButton;
-    TextView signUpoption, forgotPassword;
+    Button signinButton,signUpoption, forgotPassword;
     RadioGroup radioGroup;
     public static String userType;
     public static String userName;

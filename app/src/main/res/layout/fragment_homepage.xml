@@ -38,18 +38,6 @@
                 android:textSize="21sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/category_see_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="See All"
-                android:textColor="@color/AppTheme"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -102,7 +90,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/popular_recycle"
                 android:layout_width="wrap_content"
-                android:background="@color/white"
+                android:background="@drawable/homebackground"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
                 android:layout_marginTop="6dp"
