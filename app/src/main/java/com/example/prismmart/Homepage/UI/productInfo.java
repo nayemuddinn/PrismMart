@@ -77,7 +77,7 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
             product_category.setText("Category : " + popularProductModel.getProductCategory());
             product_id.setText("ID: " + popularProductModel.getProductID());
             product_description.setText(popularProductModel.getProductDescription());
-            product_price.setText(popularProductModel.getProductPrice() + "Taka/");
+            product_price.setText(popularProductModel.getProductPrice() + "Taka");
             product_unit.setText(popularProductModel.getProductUnit());
 
         }
@@ -111,10 +111,9 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
         }
         if (view.getId() == R.id.productInfo_add_to_cart) {
 
-    /*        int t_price=Integer.parseInt(product_price.getText().toString());
-            int t_quantity=Integer.parseInt(product_Quantity.getText().toString());
-            totalPrice= String.valueOf(t_price*t_quantity).toString();*/
-            totalPrice = product_price.getText().toString();
+            int t_price = Integer.parseInt(popularProductModel.getProductPrice().toString());
+
+            totalPrice = String.valueOf(t_price * totalQuantity);
 
             String time, date;
 
@@ -133,7 +132,7 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
             cartMap.put("productName", product_name.getText().toString());
             cartMap.put("productPrice", product_price.getText().toString());
             cartMap.put("productCategory", product_category.getText().toString());
-            cartMap.put("productQuantity", product_Quantity.getText().toString());
+            cartMap.put("totalQuantity", product_Quantity.getText().toString());
             cartMap.put("productCategory", product_category.getText().toString());
             cartMap.put("totalPrice", totalPrice);
             cartMap.put("Date", date);
@@ -144,7 +143,6 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
                 @Override
                 public void onComplete(@NonNull Task<DocumentReference> task) {
                     Toast.makeText(productInfo.this, "Added to Cart SuccessFully", Toast.LENGTH_SHORT).show();
-                    finish();
                 }
             });
 
