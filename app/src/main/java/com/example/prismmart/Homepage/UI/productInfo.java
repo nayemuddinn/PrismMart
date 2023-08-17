@@ -1,24 +1,40 @@
 package com.example.prismmart.Homepage.UI;
 
+import static java.lang.Integer.parseInt;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.prismmart.Model.popularProductModel;
 import com.example.prismmart.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.protobuf.StringValue;
 
-public class productInfo extends AppCompatActivity {
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+
+public class productInfo extends AppCompatActivity implements View.OnClickListener {
 
     ImageView productImage, addItem, removeItem, clearItem;
-    TextView product_name, product_description, product_price, product_id, product_unit, product_category;
+    TextView product_Quantity, product_name, product_description, product_price, product_id, product_unit, product_category;
     Button addToCart, buyNow;
     FirebaseFirestore fstore;
+    FirebaseAuth mAuth;
     popularProductModel popularProductModel = null;
+    String totalPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +50,18 @@ public class productInfo extends AppCompatActivity {
         product_description = findViewById(R.id.productInfo_product_description);
         product_id = findViewById(R.id.productInfo_product_id);
         product_price = findViewById(R.id.productInfo_product_price);
+        product_Quantity = findViewById(R.id.product_info_quantity);
         product_category = findViewById(R.id.productInfo_product_category);
         product_unit = findViewById(R.id.productInfo_product_unit);
         addToCart = findViewById(R.id.productInfo_add_to_cart);
         buyNow = findViewById(R.id.productInfo_buy_now);
 
+
+        addToCart.setOnClickListener(this);
+
         fstore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
         final Object obj = getIntent().getSerializableExtra("productInfo");
 
 
@@ -57,6 +79,61 @@ public class productInfo extends AppCompatActivity {
 
         }
 
+
+    }
+
+    @Override
+    public void onClick(View view) {
+
+
+        if (view.getId() == R.id.productInfo_add_item) {
+
+        }
+
+        if (view.getId() == R.id.productInfo_remove_item) {
+
+        }
+        if (view.getId() == R.id.productInfo_add_to_cart) {
+
+    /*        int t_price=Integer.parseInt(product_price.getText().toString());
+            int t_quantity=Integer.parseInt(product_Quantity.getText().toString());
+            totalPrice= String.valueOf(t_price*t_quantity).toString();*/
+            totalPrice = product_price.getText().toString();
+
+            String time, date;
+
+            Calendar calForDate = Calendar.getInstance();
+
+
+            SimpleDateFormat currentDate = new SimpleDateFormat("dd/MM/yyyy");
+            date = currentDate.format(calForDate.getTime());
+
+            SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+            time = currentTime.format(calForDate.getTime());
+
+            final HashMap<String, Object> cartMap = new HashMap<>();
+
+            cartMap.put("productID", product_id.getText().toString());
+            cartMap.put("productName", product_name.getText().toString());
+            cartMap.put("productPrice", product_price.getText().toString());
+            cartMap.put("productCategory", product_category.getText().toString());
+            cartMap.put("productQuantity", product_Quantity.getText().toString());
+            cartMap.put("productCategory", product_category.getText().toString());
+            cartMap.put("totalPrice", totalPrice);
+            cartMap.put("Date", date);
+            cartMap.put("Time", time);
+
+
+            fstore.collection("Cart").document(mAuth.getCurrentUser().getUid()).collection("UserCart").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentReference> task) {
+                    Toast.makeText(productInfo.this, "Added to Cart SuccessFully", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            });
+
+
+        }
 
     }
 }
