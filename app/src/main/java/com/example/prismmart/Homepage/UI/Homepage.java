@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 
 import com.example.prismmart.Admin_Upload_Product.Upload_Product;
+import com.example.prismmart.CartDetails.cart;
 import com.example.prismmart.Homepage.Fragment.Homepage_Fragment;
 import com.example.prismmart.Login.sign_in;
 
@@ -117,6 +118,9 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
             finish();
+        } else if (item.getItemId() == R.id.nav_cart) {
+            Intent i = new Intent(Homepage.this, cart.class);
+            startActivity(i);
         }
         drawerLayout.closeDrawers();
         return true;

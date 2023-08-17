@@ -129,14 +129,11 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
             final HashMap<String, Object> cartMap = new HashMap<>();
 
             cartMap.put("productID", product_id.getText().toString());
+            cartMap.put("productCategory", product_category.getText().toString());
             cartMap.put("productName", product_name.getText().toString());
             cartMap.put("productPrice", product_price.getText().toString());
-            cartMap.put("productCategory", product_category.getText().toString());
             cartMap.put("totalQuantity", product_Quantity.getText().toString());
-            cartMap.put("productCategory", product_category.getText().toString());
             cartMap.put("totalPrice", totalPrice);
-            cartMap.put("Date", date);
-            cartMap.put("Time", time);
 
 
             fstore.collection("Cart").document(mAuth.getCurrentUser().getUid()).collection("UserCart").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {

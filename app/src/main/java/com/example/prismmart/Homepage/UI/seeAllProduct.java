@@ -67,7 +67,7 @@ public class seeAllProduct extends AppCompatActivity {
             });
         } else {
 
-            fstore.collection("All Product").whereEqualTo("productCategory",type).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            fstore.collection("All Product").whereEqualTo("productCategory", type).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if (task.isSuccessful()) {
