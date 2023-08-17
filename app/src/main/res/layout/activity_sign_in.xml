@@ -45,8 +45,8 @@
         android:drawableLeft="@drawable/baseline_key_24"
         android:drawablePadding="10dp"
         android:elevation="3dp"
-        android:inputType="textPassword"
         android:hint="Password"
+        android:inputType="textPassword"
         android:padding="15dp"
         android:textColor="#000000"
         android:textColorHint="@color/TextColorHint"
@@ -88,24 +88,25 @@
         android:textColor="@color/white"
         android:textSize="14dp"></Button>
 
-    <EditText
+    <TextView
         android:id="@+id/signinPage_forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textColor="@color/AppTheme"
+        android:layout_marginTop="45dp"
         android:text="Forgot Passwoord?"
-        android:textStyle="bold"
-        android:textSize="15dp"></EditText>
+        android:textColor="@color/AppTheme"
+        android:textSize="16dp"
+        android:textStyle="bold"></TextView>
 
-    <EditText
+    <TextView
         android:id="@+id/signinPage_signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Don't have an account? Sign Up"
         android:textColor="@color/AppTheme"
-        android:textStyle="bold"
-        android:textSize="15dp"></EditText>
+        android:textSize="16dp"
+        android:textStyle="bold"></TextView>
 
 
 </LinearLayout>
