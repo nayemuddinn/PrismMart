@@ -80,33 +80,32 @@
 
     <Button
         android:id="@+id/signin_button"
-        android:layout_width="250dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="55dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
         android:backgroundTint="@color/AppTheme"
         android:text="Sign In"
         android:textColor="@color/white"
         android:textSize="14dp"></Button>
 
-    <Button
+    <EditText
         android:id="@+id/signinPage_forgot_password"
-        android:layout_width="250dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="@color/AppTheme"
-        android:text="Forgot password?"
-        android:textColor="@color/white"
-        android:textSize="14dp"></Button>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/AppTheme"
+        android:text="Forgot Passwoord?"
+        android:textStyle="bold"
+        android:textSize="15dp"></EditText>
 
-    <Button
+    <EditText
         android:id="@+id/signinPage_signUp"
-        android:layout_width="250dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="@color/AppTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Don't have an account? Sign Up"
-        android:textColor="@color/white"
-        android:textSize="14dp"></Button>
+        android:textColor="@color/AppTheme"
+        android:textStyle="bold"
+        android:textSize="15dp"></EditText>
 
 
 </LinearLayout>
