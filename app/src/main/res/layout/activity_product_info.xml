@@ -114,16 +114,23 @@
                     android:id="@+id/productInfo_product_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0Taka "
+                    android:text="0Taka"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/per "
+                    android:textColor="@color/AppTheme"
+                    android:textSize="15dp" />
+
+                <TextView
                     android:id="@+id/productInfo_product_unit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="/per unit"
+                    android:text="unit"
                     android:textColor="@color/AppTheme"
                     android:textSize="15dp" />
 

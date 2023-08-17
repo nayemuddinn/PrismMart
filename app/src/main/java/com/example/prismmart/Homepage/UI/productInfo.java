@@ -35,6 +35,7 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
     FirebaseAuth mAuth;
     popularProductModel popularProductModel = null;
     String totalPrice;
+    int totalQuantity = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,9 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
 
 
         addToCart.setOnClickListener(this);
+        addItem.setOnClickListener(this);
+        removeItem.setOnClickListener(this);
+        clearItem.setOnClickListener(this);
 
         fstore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -65,8 +69,7 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
         final Object obj = getIntent().getSerializableExtra("productInfo");
 
 
-        if (obj instanceof popularProductModel)
-            popularProductModel = (popularProductModel) obj;
+        if (obj instanceof popularProductModel) popularProductModel = (popularProductModel) obj;
 
         if (popularProductModel != null) {
             Glide.with(getApplicationContext()).load(popularProductModel.getProductImage()).into(productImage);
@@ -75,7 +78,7 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
             product_id.setText("ID: " + popularProductModel.getProductID());
             product_description.setText(popularProductModel.getProductDescription());
             product_price.setText(popularProductModel.getProductPrice() + "Taka/");
-            product_unit.setText("per " + popularProductModel.getProductUnit());
+            product_unit.setText(popularProductModel.getProductUnit());
 
         }
 
@@ -86,12 +89,25 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
     public void onClick(View view) {
 
 
+        if (view.getId() == R.id.productInfo_clear_item) {
+            product_Quantity.setText("1");
+            totalQuantity = 1;
+        }
         if (view.getId() == R.id.productInfo_add_item) {
 
+            if (totalQuantity < 10) {
+                totalQuantity++;
+                product_Quantity.setText(String.valueOf(totalQuantity));
+            } else
+                Toast.makeText(this, "Maximum Order Limit is 10" + product_unit.getText().toString(), Toast.LENGTH_SHORT).show();
         }
 
         if (view.getId() == R.id.productInfo_remove_item) {
-
+            if (totalQuantity > 1) {
+                totalQuantity--;
+                product_Quantity.setText(String.valueOf(totalQuantity));
+            } else
+                Toast.makeText(this, "Minimum Oder Limit is 1" + product_unit.getText().toString(), Toast.LENGTH_SHORT).show();
         }
         if (view.getId() == R.id.productInfo_add_to_cart) {
 
