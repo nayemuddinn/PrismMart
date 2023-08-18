@@ -22,12 +22,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
+import java.util.Arrays;
+
 
 public class googleMap extends AppCompatActivity {
 
     FusedLocationProviderClient client;
     SupportMapFragment mapFragment;
-    int REQUEST_Code = -1;
+    int REQUEST_Code = 111;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class googleMap extends AppCompatActivity {
         client = LocationServices.getFusedLocationProviderClient(googleMap.this);
 
 
-        if (ActivityCompat.checkSelfPermission(googleMap.this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+        if (ActivityCompat.checkSelfPermission(googleMap.this, Arrays.toString(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}))
                 == PackageManager.PERMISSION_GRANTED) {
 
             getCurrentLocation();

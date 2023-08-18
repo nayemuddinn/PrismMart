@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.prismmart.Adapter.cartAdapter;
 import com.example.prismmart.Adapter.popularProductAdapter;
+import com.example.prismmart.Map.googleMap;
 import com.example.prismmart.Model.cartModel;
 import com.example.prismmart.Model.popularProductModel;
 import com.example.prismmart.R;
@@ -114,6 +116,12 @@ public class cart extends AppCompatActivity implements View.OnClickListener{
         {
             Toast.makeText(this, "Paid Successfully", Toast.LENGTH_SHORT).show();
             pay.setText("0");
+        }
+
+        if(view.getId()==R.id.cart_get_Address_map)
+        {
+            Intent i=new Intent(cart.this, googleMap.class);
+            startActivity(i);
         }
 
     }

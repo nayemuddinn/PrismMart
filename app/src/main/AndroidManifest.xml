@@ -17,7 +17,9 @@
         android:theme="@style/Theme.PrismMart"
         tools:targetApi="31">
 
-        <meta-data android:name="com.google.geo.API_KEY"></meta-data>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/GoogleMapAPIKey"/>
 
         <activity
             android:name=".Map.googleMap"
