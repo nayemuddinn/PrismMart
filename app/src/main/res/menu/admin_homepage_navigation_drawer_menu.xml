@@ -20,7 +20,7 @@
             android:title="Add Product" />
         <item
             android:id="@+id/nav_update_product"
-            android:icon="@drawable/baseline_info_24"
+            android:icon="@drawable/baseline_update"
             android:title="Update product" />
 
         <item

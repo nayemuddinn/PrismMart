@@ -42,6 +42,7 @@
             android:layout_height="35dp"
             android:layout_marginLeft="30dp"
             android:text="Product ID: "
+            android:textColor="#797A7E"
             android:textSize="20dp"
             android:textStyle="bold"></TextView>
 
