@@ -58,6 +58,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:hint="Product Catagory"
+        android:textColor="@color/black"
         android:textColorHint="#ACA6A6"></AutoCompleteTextView>
 
     <AutoCompleteTextView
@@ -65,6 +66,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:hint="Product Unit Type"
+        android:textColor="@color/black"
         android:textColorHint="#ACA6A6"></AutoCompleteTextView>
 
     <EditText
