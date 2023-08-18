@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class cart extends AppCompatActivity implements View.OnClickListener{
+public class cart extends AppCompatActivity implements View.OnClickListener {
 
 
     RecyclerView cartRecycle;
@@ -41,7 +42,9 @@ public class cart extends AppCompatActivity implements View.OnClickListener{
     FirebaseFirestore fstore;
     TextView showDate, showTime;
     EditText Address;
-    Button map,pay;
+    Button map, pay;
+
+    //public static String address;
 
 
     @Override
@@ -52,13 +55,22 @@ public class cart extends AppCompatActivity implements View.OnClickListener{
         cartRecycle = findViewById(R.id.cart_recycle);
         showDate = findViewById(R.id.cart_current_date);
         showTime = findViewById(R.id.cart_current_time);
-        Address=findViewById(R.id.cart_address);
-        map=findViewById(R.id.cart_get_Address_map);
-        pay=findViewById(R.id.cart_pay);
+        Address = findViewById(R.id.cart_address);
+        map = findViewById(R.id.cart_get_Address_map);
+        pay = findViewById(R.id.cart_pay);
 
 
         pay.setOnClickListener(this);
         map.setOnClickListener(this);
+
+
+        String address = getIntent().getStringExtra("Address");
+
+
+        if (address.contains("null"))
+            Address.setHint("Enter Address");
+        else
+            Address.setText(address);
 
         mAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
@@ -111,16 +123,16 @@ public class cart extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
 
-        if(view.getId()==R.id.cart_pay)
-        {
+        if (view.getId() == R.id.cart_pay) {
             Toast.makeText(this, "Paid Successfully", Toast.LENGTH_SHORT).show();
-            pay.setText("0");
+            pay.setText("PAY");
         }
 
-        if(view.getId()==R.id.cart_get_Address_map)
-        {
-            Intent i=new Intent(cart.this, googleMap.class);
+        if (view.getId() == R.id.cart_get_Address_map) {
+            Intent i = new Intent(cart.this, googleMap.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
+            finish();
         }
 
     }

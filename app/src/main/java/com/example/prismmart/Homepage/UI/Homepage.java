@@ -120,6 +120,7 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
             finish();
         } else if (item.getItemId() == R.id.nav_cart) {
             Intent i = new Intent(Homepage.this, cart.class);
+            i.putExtra("Address", "null");
             startActivity(i);
         }
         drawerLayout.closeDrawers();

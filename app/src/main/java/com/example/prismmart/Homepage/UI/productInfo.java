@@ -120,6 +120,7 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
         if (view.getId() == R.id.productInfo_buy_now) {
             addToCart();
             Intent i = new Intent(productInfo.this, cart.class);
+            i.putExtra("Address","null");
             startActivity(i);
         }
 

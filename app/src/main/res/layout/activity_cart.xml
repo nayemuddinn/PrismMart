@@ -70,7 +70,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cart_recycle"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="480dp"
         android:background="@drawable/homebackground"
         android:paddingTop="30dp"></androidx.recyclerview.widget.RecyclerView>
 
@@ -84,7 +84,7 @@
         <EditText
             android:id="@+id/cart_address"
             android:layout_width="380dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:background="@drawable/edit_text_bg"
             android:drawableLeft="@drawable/baseline_add_home_24"
