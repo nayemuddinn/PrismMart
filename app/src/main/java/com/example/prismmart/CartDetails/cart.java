@@ -15,10 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.prismmart.Adapter.cartAdapter;
-import com.example.prismmart.Adapter.popularProductAdapter;
 import com.example.prismmart.Map.googleMap;
 import com.example.prismmart.Model.cartModel;
-import com.example.prismmart.Model.popularProductModel;
+
 import com.example.prismmart.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
