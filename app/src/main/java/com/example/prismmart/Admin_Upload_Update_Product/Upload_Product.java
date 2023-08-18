@@ -1,4 +1,4 @@
-package com.example.prismmart.Admin_Upload_Product;
+package com.example.prismmart.Admin_Upload_Update_Product;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.prismmart.Homepage.UI.Homepage;
-import com.example.prismmart.Login.sign_in;
 import com.example.prismmart.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,11 +27,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 

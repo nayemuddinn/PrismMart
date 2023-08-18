@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -34,17 +33,57 @@
     </LinearLayout>
 
 
-    <EditText
-        android:id="@+id/upload_product_ID"
-        android:layout_width="350dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="30dp"
+            android:text="Product ID: "
+            android:textSize="20dp"
+            android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/update_product_ID"
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:background="@drawable/edit_text_bg"
+            android:textColor="@color/black"
+            android:textColorHint="#ACA6A6"></EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/AppTheme"
-        android:hint="Product ID"
-        android:textColor="@color/black"
-        android:textColorHint="#ACA6A6"></EditText>
+        android:layout_marginTop="8dp"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/update_product_View"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:backgroundTint="@color/AppTheme"
+            android:text="View"
+            android:textColor="@color/white"
+            android:textSize="15dp"></Button>
+
+        <Button
+            android:id="@+id/update_product_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="35dp"
+            android:backgroundTint="#AC0E0E"
+            android:text="Delete"
+            android:textColor="@color/white"
+            android:textSize="15dp"></Button>
+    </LinearLayout>
 
     <EditText
-        android:id="@+id/upload_product_name"
+        android:id="@+id/update_product_name"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/AppTheme"
@@ -54,21 +93,21 @@
 
 
     <AutoCompleteTextView
-        android:id="@+id/upload_product_catagory"
+        android:id="@+id/update_product_catagory"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:hint="Product Catagory"
         android:textColorHint="#ACA6A6"></AutoCompleteTextView>
 
     <AutoCompleteTextView
-        android:id="@+id/upload_product_unit_type"
+        android:id="@+id/update_product_unit_type"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:hint="Product Unit Type"
         android:textColorHint="#ACA6A6"></AutoCompleteTextView>
 
     <EditText
-        android:id="@+id/upload_product_description"
+        android:id="@+id/update_product_description"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/AppTheme"
@@ -77,7 +116,7 @@
         android:textColorHint="#ACA6A6"></EditText>
 
     <EditText
-        android:id="@+id/upload_product_price"
+        android:id="@+id/update_product_price"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/AppTheme"
@@ -87,7 +126,7 @@
 
 
     <ImageView
-        android:id="@+id/upload_image_view"
+        android:id="@+id/update_image_view"
         android:layout_width="320dp"
         android:layout_height="250dp"
         android:layout_marginTop="15dp"
@@ -97,12 +136,12 @@
 
 
     <Button
-        android:id="@+id/upload_save_product"
+        android:id="@+id/update_update_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:backgroundTint="@color/AppTheme"
-        android:text="Save Product"
+        android:text="Update Product"
         android:textColor="@color/white"></Button>
 
 

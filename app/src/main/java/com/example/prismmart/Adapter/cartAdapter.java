@@ -19,6 +19,7 @@ public class cartAdapter extends RecyclerView.Adapter<cartAdapter.ViewHolder> {
     Context c;
     List<cartModel> cartList;
 
+
     public cartAdapter(Context c, List<cartModel> cartList) {
         this.c = c;
         this.cartList = cartList;
@@ -62,4 +63,6 @@ public class cartAdapter extends RecyclerView.Adapter<cartAdapter.ViewHolder> {
             totalQuantity = itemView.findViewById(R.id.cart_total_quantity);
         }
     }
+
+
 }

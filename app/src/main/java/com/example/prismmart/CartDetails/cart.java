@@ -43,8 +43,8 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
     TextView showDate, showTime;
     EditText Address;
     Button map, pay;
+    int totalBill=0;
 
-    //public static String address;
 
 
     @Override
@@ -82,9 +82,12 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
 
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         cartModel cart = document.toObject(cartModel.class);
+                        int t_price = Integer.parseInt(cart.getTotalPrice().toString());
+                        totalBill+=t_price;
                         cartList.add(cart);
                         adapter.notifyDataSetChanged();
                     }
+                    pay.setText("PAY "+String.valueOf(totalBill)+" Taka");
                 } else {
 
                 }
@@ -97,6 +100,7 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
         cartRecycle.setAdapter(adapter);
 
 
+        pay.setText(String.valueOf(totalBill));
         setDateTime();
 
 
@@ -124,6 +128,11 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
 
         if (view.getId() == R.id.cart_pay) {
+            if(totalBill==0)
+            {
+                Toast.makeText(this, "You have nothing to pay", Toast.LENGTH_SHORT).show();
+                return;
+            }
             Toast.makeText(this, "Paid Successfully", Toast.LENGTH_SHORT).show();
             pay.setText("PAY");
         }

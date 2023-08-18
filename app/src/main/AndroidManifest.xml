@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android:permission.ACCESS_FINE_LOCATION"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <uses-permission android:name="android:permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -16,10 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PrismMart"
         tools:targetApi="31">
+        <activity
+            android:name=".Admin_Upload_Update_Product.Update_Product"
+            android:exported="false"
+            android:label="@string/title_activity_update_product"
+            android:theme="@style/Theme.PrismMart" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/GoogleMapAPIKey"/>
+            android:value="@string/GoogleMapAPIKey" />
 
         <activity
             android:name=".Map.googleMap"
@@ -37,7 +42,7 @@
             android:name=".Login.forget_password"
             android:exported="false" />
         <activity
-            android:name=".Admin_Upload_Product.Upload_Product"
+            android:name=".Admin_Upload_Update_Product.Upload_Product"
             android:exported="false" />
         <activity
             android:name=".Discarded_classes.UIUser.User_homePage"
