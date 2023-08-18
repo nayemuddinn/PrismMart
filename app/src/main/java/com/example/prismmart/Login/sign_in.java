@@ -67,21 +67,25 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
                 if (email.isEmpty()) {
                     getEmail.setError("Enter a Username");
                     getEmail.requestFocus();
+                    return;
                 }
 
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     getEmail.setError("Enter a valid Email");
                     getEmail.requestFocus();
+                    return;
                 }
 
                 if (password.isEmpty()) {
                     getPassword.setError("Fill out the form");
                     getPassword.requestFocus();
+                    return;
                 }
 
                 if (password.length() < 6) {
                     getPassword.setError("Password cannot be less than 6 word");
                     getPassword.requestFocus();
+                    return;
                 }
 
 
@@ -144,7 +148,7 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
             startActivity(i);
         } else if (view.getId() == R.id.signinPage_forgot_password) {
             //Forget Password
-            Intent intent= new Intent(this,forget_password.class);
+            Intent intent = new Intent(this, forget_password.class);
             startActivity(intent);
         }
 

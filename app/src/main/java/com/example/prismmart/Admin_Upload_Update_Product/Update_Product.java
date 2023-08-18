@@ -83,6 +83,11 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
 
         if (view.getId() == R.id.update_product_delete) {
+            if (productID.getText().toString().equals(null) || productID.getText().toString().isEmpty()) {
+                productID.setError("Enter a Product ID");
+                productID.requestFocus();
+                return;
+            }
             fstore.collection("All Product").whereEqualTo("productID", productID.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -111,6 +116,13 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
         }
 
         if (view.getId() == R.id.update_product_View) {
+
+            if (productID.getText().toString().equals(null) || productID.getText().toString().isEmpty()) {
+                productID.setError("Enter a Product ID");
+                productID.requestFocus();
+                return;
+            }
+
             fstore.collection("All Product").whereEqualTo("productID", productID.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {

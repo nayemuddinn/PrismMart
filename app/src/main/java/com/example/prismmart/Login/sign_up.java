@@ -65,6 +65,7 @@ public class sign_up extends AppCompatActivity {
                 if (username.isEmpty()) {
                     getUsername.setError("Enter a Username");
                     getUsername.requestFocus();
+                    return;
                 }
 
                 if (email.isEmpty()) {
