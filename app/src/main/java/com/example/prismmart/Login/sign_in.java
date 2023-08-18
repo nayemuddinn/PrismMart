@@ -63,8 +63,6 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
                 String email = getEmail.getText().toString();
                 String password = getPassword.getText().toString();
 
-                getEmail.setText("");
-                getPassword.setText("");
 
                 if (email.isEmpty()) {
                     getEmail.setError("Enter a Username");

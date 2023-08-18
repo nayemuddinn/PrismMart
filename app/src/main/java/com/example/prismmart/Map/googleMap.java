@@ -88,10 +88,7 @@ public class googleMap extends FragmentActivity implements OnMapReadyCallback {
         try {
             addresses = geocoder.getFromLocation(lat, lng, 1);
             String address = addresses.get(0).getAddressLine(0);
-            String city = addresses.get(0).getLocality();
-            String state = addresses.get(0).getAdminArea();
-            String country = addresses.get(0).getCountryName();
-            Address = address + "," + city + "," + state + "," + country;
+            Address = address;
 
 
         } catch (IOException e) {
