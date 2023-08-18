@@ -5,6 +5,7 @@ import static java.lang.Integer.parseInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.prismmart.CartDetails.cart;
 import com.example.prismmart.Model.popularProductModel;
 import com.example.prismmart.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -62,6 +64,7 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
         addItem.setOnClickListener(this);
         removeItem.setOnClickListener(this);
         clearItem.setOnClickListener(this);
+        buyNow.setOnClickListener(this);
 
         fstore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -85,9 +88,40 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
 
     }
 
+    public void addToCart() {
+
+
+        int t_price = Integer.parseInt(popularProductModel.getProductPrice().toString());
+
+        totalPrice = String.valueOf(t_price * totalQuantity);
+
+
+        final HashMap<String, Object> cartMap = new HashMap<>();
+
+        cartMap.put("productID", product_id.getText().toString());
+        cartMap.put("productCategory", product_category.getText().toString());
+        cartMap.put("productName", product_name.getText().toString());
+        cartMap.put("productPrice", product_price.getText().toString());
+        cartMap.put("totalQuantity", product_Quantity.getText().toString());
+        cartMap.put("totalPrice", totalPrice);
+
+
+        fstore.collection("Cart").document(mAuth.getCurrentUser().getUid()).collection("UserCart").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentReference> task) {
+                Toast.makeText(productInfo.this, "Added to Cart SuccessFully", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     @Override
     public void onClick(View view) {
 
+        if (view.getId() == R.id.productInfo_buy_now) {
+            addToCart();
+            Intent i = new Intent(productInfo.this, cart.class);
+            startActivity(i);
+        }
 
         if (view.getId() == R.id.productInfo_clear_item) {
             product_Quantity.setText("1");
@@ -111,39 +145,7 @@ public class productInfo extends AppCompatActivity implements View.OnClickListen
         }
         if (view.getId() == R.id.productInfo_add_to_cart) {
 
-            int t_price = Integer.parseInt(popularProductModel.getProductPrice().toString());
-
-            totalPrice = String.valueOf(t_price * totalQuantity);
-
-            String time, date;
-
-            Calendar calForDate = Calendar.getInstance();
-
-
-            SimpleDateFormat currentDate = new SimpleDateFormat("dd/MM/yyyy");
-            date = currentDate.format(calForDate.getTime());
-
-            SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
-            time = currentTime.format(calForDate.getTime());
-
-            final HashMap<String, Object> cartMap = new HashMap<>();
-
-            cartMap.put("productID", product_id.getText().toString());
-            cartMap.put("productCategory", product_category.getText().toString());
-            cartMap.put("productName", product_name.getText().toString());
-            cartMap.put("productPrice", product_price.getText().toString());
-            cartMap.put("totalQuantity", product_Quantity.getText().toString());
-            cartMap.put("totalPrice", totalPrice);
-
-
-            fstore.collection("Cart").document(mAuth.getCurrentUser().getUid()).collection("UserCart").add(cartMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentReference> task) {
-                    Toast.makeText(productInfo.this, "Added to Cart SuccessFully", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-
+            addToCart();
         }
 
     }

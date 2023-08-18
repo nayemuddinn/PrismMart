@@ -38,8 +38,9 @@ public class cartAdapter extends RecyclerView.Adapter<cartAdapter.ViewHolder> {
         holder.name.setText(cartList.get(position).getProductName().toString());
         holder.category.setText(cartList.get(position).getProductCategory().toString());
         holder.price.setText(cartList.get(position).getTotalPrice().toString());
-        holder.totalPrice.setText(cartList.get(position).getTotalPrice().toString());
         holder.totalQuantity.setText(cartList.get(position).getTotalQuantity().toString());
+        holder.totalPrice.setText(cartList.get(position).getTotalPrice().toString());
+
     }
 
     @Override
@@ -57,7 +58,7 @@ public class cartAdapter extends RecyclerView.Adapter<cartAdapter.ViewHolder> {
             name = itemView.findViewById(R.id.cart_product_name);
             price = itemView.findViewById(R.id.cart_product_price);
             category = itemView.findViewById(R.id.cart_product_category);
-            totalPrice = itemView.findViewById(R.id.cart_product_price);
+            totalPrice = itemView.findViewById(R.id.cart_total_price);
             totalQuantity = itemView.findViewById(R.id.cart_total_quantity);
         }
     }

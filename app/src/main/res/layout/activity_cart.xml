@@ -17,6 +17,16 @@
         android:weightSum="2">
 
         <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Current Date :"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/cart_current_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -24,15 +34,6 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/current_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Current Date: "
-            android:textColor="@color/black"
-            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -46,6 +47,16 @@
         android:weightSum="2">
 
         <TextView
+            android:layout_width="113dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Current Time :"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/cart_current_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -54,22 +65,56 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/current_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Current Time: "
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cart_recycle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="500dp"
         android:background="@drawable/homebackground"
         android:paddingTop="30dp"></androidx.recyclerview.widget.RecyclerView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/cart_address"
+            android:layout_width="380dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/edit_text_bg"
+            android:drawableLeft="@drawable/baseline_add_home_24"
+            android:drawablePadding="10dp"
+            android:elevation="3dp"
+            android:hint="Address"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/TextColorHint"
+            android:textSize="20dp"></EditText>
+
+        <Button
+            android:id="@+id/cart_get_Address_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/AppTheme"
+            android:text="Get Address From Google Map"
+            android:textColor="@color/white"
+            android:textSize="14dp"></Button>
+
+        <Button
+            android:id="@+id/cart_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="#AA2020"
+            android:text="Pay 0Taka"
+            android:textColor="@color/white"
+            android:textSize="14dp"></Button>
+    </LinearLayout>
 
 </LinearLayout>
