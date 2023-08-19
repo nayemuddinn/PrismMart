@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.prismmart.Admin.Sales;
 import com.example.prismmart.Admin.Update_Product;
 import com.example.prismmart.Admin.Upload_Product;
 import com.example.prismmart.CartDetails.cart;
@@ -137,7 +138,8 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         }
         else if(item.getItemId()==R.id.nav_sales)
         {
-
+            Intent i = new Intent(Homepage.this, Sales.class);
+            startActivity(i);
         }
         drawerLayout.closeDrawers();
         return true;

@@ -143,7 +143,7 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
             }
             generateOrder(totalBill);
             adapter.clearCart();
-            Address.setText("");l
+            Address.setText("");
             Address.setHint("Enter Address here");
             pay.setText("PAY");
             totalBill=0;
@@ -167,7 +167,7 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
         orderDetails.put("orderDate", date);
         orderDetails.put("orderTime", time);
         orderDetails.put("orderNo", orderNo);
-        orderDetails.put("totalBill", totalBill);
+        orderDetails.put("totalBill", String.valueOf(totalBill));
         orderDetails.put("Address", Address.getText().toString());
 
         //Customer panel
