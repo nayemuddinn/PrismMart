@@ -1,36 +1,41 @@
 package com.example.prismmart.Admin_Upload_Update_Product;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.prismmart.Homepage.UI.Homepage;
-import com.example.prismmart.Model.cartModel;
-import com.example.prismmart.Model.popularProductModel;
 import com.example.prismmart.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+
 
 public class Update_Product extends AppCompatActivity implements View.OnClickListener {
 
+    Uri imageUri;
     EditText productID, productName, productDescription, productPrice;
     ImageView productImage;
     Button update, delete, ViewProduct;
@@ -40,7 +45,16 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
     ArrayAdapter<String> product_unit_adapter;
     String[] categoryName, Unitname;
     FirebaseFirestore fstore;
+    StorageReference storageReference;
+
     String name;
+    String category;
+    String description;
+    String price;
+    String unit, imageURL;
+    private static final int image_req = 2;
+    boolean imageSelect = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +75,11 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
 
         delete.setOnClickListener(this);
         ViewProduct.setOnClickListener(this);
+        update.setOnClickListener(this);
+        productImage.setOnClickListener(this);
+
         fstore = FirebaseFirestore.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference("All Product");
 
 
         //category List autoCompleteTextview
@@ -79,9 +97,17 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
 
     }
 
+
     @Override
     public void onClick(View view) {
 
+        if (view.getId() == R.id.update_image_view) {
+            imageSelect = true;
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(intent, image_req);
+        }
         if (view.getId() == R.id.update_product_delete) {
             if (productID.getText().toString().equals(null) || productID.getText().toString().isEmpty()) {
                 productID.setError("Enter a Product ID");
@@ -123,6 +149,7 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
                 return;
             }
 
+
             fstore.collection("All Product").whereEqualTo("productID", productID.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -136,6 +163,7 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
                         productDescription.setText(documentSnapshot.getString("productDescription").toString());
                         productPrice.setText(documentSnapshot.getString("productPrice").toString());
                         Glide.with(Update_Product.this).load(documentSnapshot.getString("productImage").toString()).into(productImage);
+                        imageURL = documentSnapshot.getString("productImage").toString();
 
 
                     } else {
@@ -146,7 +174,122 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
 
 
         }
+        if (view.getId() == R.id.update_update_product) {
+
+            if (productID.getText().toString().equals(null) || productID.getText().toString().isEmpty()) {
+                productID.setError("Enter a Product ID");
+                productID.requestFocus();
+                return;
+            }
+
+            if (productName.getText().toString().equals(null) || productName.getText().toString().isEmpty()) {
+                productName.setError("Enter a Product Name");
+                productName.requestFocus();
+                return;
+            }
+            if (productCategory.getText().toString().equals(null) || productCategory.getText().toString().isEmpty()) {
+                productCategory.setError("Enter a Product Category");
+                productCategory.requestFocus();
+                return;
+            }
+            if (productUnit.getText().toString().equals(null) || productUnit.getText().toString().isEmpty()) {
+                productUnit.setError("Enter a Product Unit");
+                productUnit.requestFocus();
+                return;
+            }
+            if (productPrice.getText().toString().equals(null) || productPrice.getText().toString().isEmpty()) {
+                productPrice.setError("Enter a Product Price");
+                productPrice.requestFocus();
+                return;
+            }
+
+
+            name = productName.getText().toString().trim();
+            category = productCategory.getText().toString().trim();
+            description = productDescription.getText().toString().trim();
+            price = productPrice.getText().toString().trim();
+            unit = productUnit.getText().toString().trim();
+
+
+            if (imageSelect==true) {
+                String key = System.currentTimeMillis() + "." + getFileExtention(imageUri);
+                StorageReference ref = storageReference.child(key);
+
+                ref.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(getApplicationContext(), "Success storage", Toast.LENGTH_SHORT).show();
+
+
+                        Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                        while (!uriTask.isSuccessful())
+                            ;   // waits until uriTask.isSuccessful() returns true
+                        Uri downloadUrL = uriTask.getResult();
+                        imageURL = downloadUrL.toString();
+                        Toast.makeText(Update_Product.this, imageURL, Toast.LENGTH_SHORT).show();
+
+
+                    }
+
+
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@androidx.annotation.NonNull Exception e) {
+                        Toast.makeText(Update_Product.this,"Storage Upload Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+
+
+            //Firestore work
+            fstore.collection("All Product").whereEqualTo("productID", productID.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if (task.isSuccessful() && !task.getResult().isEmpty()) {
+
+                        DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+                        String documentID = documentSnapshot.getId();
+
+                        fstore.collection("All Product").document(documentID).update("productName", name, "productImage", imageURL, "productPrice", price, "productUnit", unit, "productDescription", description, "productCategory", category).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(Update_Product.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@androidx.annotation.NonNull Exception e) {
+                                Toast.makeText(Update_Product.this, "Failed to Update Product", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    } else {
+                        Toast.makeText(Update_Product.this, "Product Not Found", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+        }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == image_req && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            imageUri = data.getData();
+            Picasso.get().load(imageUri).into(productImage);
+        }
+
+    }
+
+
+    public String getFileExtention(Uri imageuri) {
+        ContentResolver contentResolver = getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(imageuri));
+    }
+
 
     @Override
     public void onBackPressed() {

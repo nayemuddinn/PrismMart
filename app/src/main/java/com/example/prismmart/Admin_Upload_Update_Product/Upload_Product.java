@@ -83,6 +83,35 @@ public class Upload_Product extends AppCompatActivity {
         saveProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (productID.getText().toString().equals(null) || productID.getText().toString().isEmpty()) {
+                    productID.setError("Enter a Product ID");
+                    productID.requestFocus();
+                    return;
+                }
+
+                if (productName.getText().toString().equals(null) || productName.getText().toString().isEmpty()) {
+                    productName.setError("Enter a Product Name");
+                    productName.requestFocus();
+                    return;
+                }
+                if (productCategory.getText().toString().equals(null) || productCategory.getText().toString().isEmpty()) {
+                    productCategory.setError("Enter a Product Category");
+                    productCategory.requestFocus();
+                    return;
+                }
+                if (productUnit.getText().toString().equals(null) || productUnit.getText().toString().isEmpty()) {
+                    productUnit.setError("Enter a Product Unit");
+                    productUnit.requestFocus();
+                    return;
+                }
+                if (productPrice.getText().toString().equals(null) || productPrice.getText().toString().isEmpty()) {
+                    productPrice.setError("Enter a Product Price");
+                    productPrice.requestFocus();
+                    return;
+                }
+
+
                 String name = productName.getText().toString().trim();
                 String category = productCategory.getText().toString().trim();
                 String description = productDescription.getText().toString().trim();
