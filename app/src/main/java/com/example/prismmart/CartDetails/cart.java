@@ -167,6 +167,7 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
         orderDetails.put("orderTime", time);
         orderDetails.put("orderNo", orderNo);
         orderDetails.put("totalBill", totalBill);
+        orderDetails.put("Address", Address.getText().toString());
 
         //Customer panel
         fstore.collection("Order").document(mAuth.getCurrentUser().getUid()).collection("UserOrder").add(orderDetails).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
@@ -182,7 +183,12 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
         DocumentReference saleReference = fstore.collection("SalesAdmin").document(key.toString());
         saleReference.set(orderDetails);
 
+        //All Order for Customer
+        DocumentReference customerReference = fstore.collection("CustomerOrder").document(mAuth.getCurrentUser().getUid().toString()).collection(date.toString()).document(key);
+        customerReference.set(orderDetails);
 
+
+        //Clear Cart
         fstore.collection("Cart").document(mAuth.getCurrentUser().getUid().toString()).collection("UserCart").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@androidx.annotation.NonNull Task<QuerySnapshot> task) {
@@ -192,6 +198,9 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
 
                     fstore.collection("Cart").document(mAuth.getCurrentUser().getUid().toString()).collection("UserCart").document(snapshot.getId()).delete();
                 }
+                List<cartModel>cartList=new ArrayList<>();
+                cartList.clear();
+                cartAdapter adapter=new cartAdapter(cart.this,cartList);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
