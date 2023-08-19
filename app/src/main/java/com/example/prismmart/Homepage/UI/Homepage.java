@@ -134,7 +134,8 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
         }
         else if(item.getItemId()==R.id.nav_Order)
         {
-
+            Intent i = new Intent(Homepage.this, Orders.class);
+            startActivity(i);
         }
         else if(item.getItemId()==R.id.nav_sales)
         {
