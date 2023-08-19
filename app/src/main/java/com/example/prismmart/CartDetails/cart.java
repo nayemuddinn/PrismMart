@@ -1,14 +1,12 @@
 package com.example.prismmart.CartDetails;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,20 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.prismmart.Adapter.cartAdapter;
-import com.example.prismmart.Admin_Upload_Update_Product.Update_Product;
-import com.example.prismmart.Homepage.UI.productInfo;
 import com.example.prismmart.Map.googleMap;
 import com.example.prismmart.Model.cartModel;
 
-import com.example.prismmart.Model.categoryModel;
 import com.example.prismmart.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -39,7 +32,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 public class cart extends AppCompatActivity implements View.OnClickListener {
@@ -50,11 +42,11 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
     List<cartModel> cartList;
     FirebaseAuth mAuth;
     FirebaseFirestore fstore;
-    TextView showDate, showTime;
+    TextView showDate, showTime, orderNumber;
     EditText Address;
     Button map, pay;
     int totalBill = 0;
-    String time, date;
+    String time, date, orderNo;
 
 
     @Override
@@ -68,6 +60,7 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
         Address = findViewById(R.id.cart_address);
         map = findViewById(R.id.cart_get_Address_map);
         pay = findViewById(R.id.cart_pay);
+        orderNumber = findViewById(R.id.cart_orderNo);
 
 
         pay.setOnClickListener(this);
@@ -114,6 +107,12 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
         setDateTime();
 
 
+            UUID uuid = UUID.randomUUID();
+            orderNo = uuid.toString();
+            orderNumber.setText(orderNo);
+
+
+
     }
 
     private void setDateTime() {
@@ -144,9 +143,11 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
             }
             generateOrder(totalBill);
             adapter.clearCart();
-            Address.setText("");
+            Address.setText("");l
             Address.setHint("Enter Address here");
             pay.setText("PAY");
+            totalBill=0;
+            orderNumber.setText("");
         }
 
         if (view.getId() == R.id.cart_get_Address_map) {
@@ -160,8 +161,6 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
 
     private void generateOrder(int totalBill) {
 
-        UUID uuid = UUID.randomUUID();
-        String orderNo = uuid.toString();
 
         final HashMap<String, Object> orderDetails = new HashMap<>();
 
@@ -182,11 +181,11 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
 
         //All Sales for Admin Panel
         String key = "Prism-" + System.currentTimeMillis();
-        DocumentReference saleReference = fstore.collection("SalesAdmin").document(key.toString());
+        DocumentReference saleReference = fstore.collection("SalesAdmin").document(orderNo + key.toString());
         saleReference.set(orderDetails);
 
         //All Order for Customer
-        DocumentReference customerReference = fstore.collection("CustomerOrder").document(mAuth.getCurrentUser().getUid().toString()).collection("Order").document(key.toString());
+        DocumentReference customerReference = fstore.collection("CustomerOrder").document(mAuth.getCurrentUser().getUid().toString()).collection("Order").document(orderNo);
         customerReference.set(orderDetails);
 
 

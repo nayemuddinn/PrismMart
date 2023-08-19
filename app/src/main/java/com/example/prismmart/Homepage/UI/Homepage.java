@@ -17,8 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.prismmart.Admin_Upload_Update_Product.Update_Product;
-import com.example.prismmart.Admin_Upload_Update_Product.Upload_Product;
+import com.example.prismmart.Admin.Update_Product;
+import com.example.prismmart.Admin.Upload_Product;
 import com.example.prismmart.CartDetails.cart;
 import com.example.prismmart.Homepage.Fragment.Homepage_Fragment;
 import com.example.prismmart.Login.sign_in;
@@ -130,6 +130,14 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
             finish();
+        }
+        else if(item.getItemId()==R.id.nav_Order)
+        {
+
+        }
+        else if(item.getItemId()==R.id.nav_sales)
+        {
+
         }
         drawerLayout.closeDrawers();
         return true;

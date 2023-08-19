@@ -1,4 +1,4 @@
-package com.example.prismmart.Admin_Upload_Update_Product;
+package com.example.prismmart.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

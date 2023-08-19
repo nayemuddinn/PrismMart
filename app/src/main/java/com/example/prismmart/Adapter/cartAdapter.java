@@ -38,9 +38,9 @@ public class cartAdapter extends RecyclerView.Adapter<cartAdapter.ViewHolder> {
         holder.id.setText(cartList.get(position).getProductID().toString());
         holder.name.setText(cartList.get(position).getProductName().toString());
         holder.category.setText(cartList.get(position).getProductCategory().toString());
-        holder.price.setText(cartList.get(position).getTotalPrice().toString());
+        holder.price.setText(cartList.get(position).getProductPrice().toString());
         holder.totalQuantity.setText(cartList.get(position).getTotalQuantity().toString());
-        holder.totalPrice.setText(cartList.get(position).getTotalPrice().toString());
+        holder.totalPrice.setText(cartList.get(position).getTotalPrice().toString()+"Taka");
 
     }
 

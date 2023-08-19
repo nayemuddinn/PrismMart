@@ -26,6 +26,10 @@
             android:id="@+id/nav_sales"
             android:icon="@drawable/baseline_attach_money_24"
             android:title="Sales" />
+        <item
+            android:id="@+id/nav_Order"
+            android:icon="@drawable/baseline_border_all_24"
+            android:title="Orders" />
 
         <item
             android:id="@+id/nav_settings"
