@@ -72,7 +72,6 @@ public class Homepage_Fragment extends Fragment implements View.OnClickListener 
         slideModelList.add(new SlideModel(R.drawable.homepage_sliding_image1, "Welcome to Prism Mart", ScaleTypes.CENTER_CROP));
         slideModelList.add(new SlideModel(R.drawable.homepage_sliding_image2, "Get Exclusive deal", ScaleTypes.CENTER_CROP));
         slideModelList.add(new SlideModel(R.drawable.homepage_sliding_image4, "Multiple payment gateway", ScaleTypes.CENTER_CROP));
-        slideModelList.add(new SlideModel(R.drawable.homepage_sliding_image5, "Free delivery", ScaleTypes.CENTER_CROP));
         slideModelList.add(new SlideModel(R.drawable.homepage_sliding_image3, "Up to 70% off", ScaleTypes.CENTER_CROP));
         slideModelList.add(new SlideModel(R.drawable.homepage_sliding_image6, "Worldwide Collection", ScaleTypes.CENTER_CROP));
         slider.setImageList(slideModelList);

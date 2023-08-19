@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Prism Mart</string>
 
-    <string name="first_slide">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</string>
-    <string name="second_slide">dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</string>
-    <string name="third_slide"> It has survived not only five centuries</string>
+    <string name="first_slide">"Discover Endless Delights: Your One-Stop eCommerce Haven for Irresistible Finds!"</string>
+    <string name="second_slide">"Unveiling a World of Shopping: Where Every Click Sparks Joy and Every Purchase Tells a Story!"</string>
+    <string name="third_slide"> "Elevate Your Shopping Experience: Curated Treasures Await in Our Online Wonderland!"</string>
 
     <string name="first_head">Choose your product</string>
     <string name="second_head">Multiple Payment Interface</string>
