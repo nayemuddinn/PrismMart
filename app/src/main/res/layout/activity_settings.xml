@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/homebackground"
+    android:orientation="vertical"
+    tools:context=".Homepage.UI.Settings">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="25dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="85dp"
+            android:layout_height="60dp"
+            android:src="@drawable/logo_round_blue"></ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Prism Mart"
+            android:textColor="@color/AppTheme"
+            android:textSize="25dp"></TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Name: "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/setting_username"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableRight="@drawable/baseline_person_24"
+            android:hint="UserName"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/TextColorHint"
+            android:textSize="20dp"></EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="13dp"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Email: "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/setting_email"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableRight="@drawable/baseline_email_24"
+            android:hint="UserEmail"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/TextColorHint"
+            android:textSize="20dp"></EditText>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="13dp"
+        android:weightSum="2">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Phone:"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/setting_Phone"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:drawableRight="@drawable/baseline_local_phone_24"
+            android:hint="UserPhone"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/TextColorHint"
+            android:textSize="20dp"></EditText>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/setting_update_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/AppTheme"
+        android:text="Update Information"
+        android:textColor="@color/white"
+        android:textSize="16dp"></Button>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="14dp"
+        android:backgroundTint="@color/black"
+        android:padding="10dp"
+        android:text="Change Password:"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+
+    <EditText
+        android:id="@+id/setting_curr_pass"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="14dp"
+        android:hint="Current password"
+        android:padding="15dp"
+        android:textColor="#000000"
+        android:textColorHint="#7A7979"
+        android:textSize="20dp"></EditText>
+
+    <EditText
+        android:id="@+id/setting_New_pass"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="14dp"
+        android:hint="New password"
+        android:padding="15dp"
+        android:textColor="#000000"
+        android:textColorHint="#7A7979"
+        android:textSize="20dp"></EditText>
+
+    <EditText
+        android:id="@+id/setting_confirm_new_pass"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="14dp"
+        android:hint="Confirm New password"
+        android:padding="15dp"
+        android:textColor="#000000"
+        android:textColorHint="#7A7979"
+        android:textSize="20dp"></EditText>
+
+    <Button
+        android:id="@+id/setting_update_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/AppTheme"
+        android:text="Change Password"
+        android:textColor="@color/white"
+        android:textSize="16dp"></Button>
+
+
+</LinearLayout>
+

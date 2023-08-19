@@ -37,6 +37,7 @@
         <item>Books and Stationery</item>
         <item>Personal Care</item>
         <item>Entertainment</item>
+        <item>Jewelry</item>
     </string-array>
 
     <string-array name="product_Unit_name">
