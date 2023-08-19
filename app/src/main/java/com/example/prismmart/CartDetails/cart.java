@@ -16,13 +16,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.prismmart.Adapter.cartAdapter;
+import com.example.prismmart.Admin_Upload_Update_Product.Update_Product;
+import com.example.prismmart.Homepage.UI.productInfo;
 import com.example.prismmart.Map.googleMap;
 import com.example.prismmart.Model.cartModel;
 
+import com.example.prismmart.Model.categoryModel;
 import com.example.prismmart.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -30,7 +37,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class cart extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,8 +53,8 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
     TextView showDate, showTime;
     EditText Address;
     Button map, pay;
-    int totalBill=0;
-
+    int totalBill = 0;
+    String time, date;
 
 
     @Override
@@ -83,11 +93,11 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         cartModel cart = document.toObject(cartModel.class);
                         int t_price = Integer.parseInt(cart.getTotalPrice().toString());
-                        totalBill+=t_price;
+                        totalBill += t_price;
                         cartList.add(cart);
                         adapter.notifyDataSetChanged();
                     }
-                    pay.setText("PAY "+String.valueOf(totalBill)+" Taka");
+                    pay.setText("PAY " + String.valueOf(totalBill) + " Taka");
                 } else {
 
                 }
@@ -107,7 +117,7 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void setDateTime() {
-        String time, date;
+
 
         Calendar calForDate = Calendar.getInstance();
 
@@ -128,11 +138,11 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
 
         if (view.getId() == R.id.cart_pay) {
-            if(totalBill==0)
-            {
+            if (totalBill == 0) {
                 Toast.makeText(this, "You have nothing to pay", Toast.LENGTH_SHORT).show();
                 return;
             }
+            generateOrder(totalBill);
             Toast.makeText(this, "Paid Successfully", Toast.LENGTH_SHORT).show();
             pay.setText("PAY");
         }
@@ -143,6 +153,54 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
             startActivity(i);
             finish();
         }
+
+    }
+
+    private void generateOrder(int totalBill) {
+
+        UUID uuid = UUID.randomUUID();
+        String orderNo = uuid.toString();
+
+        final HashMap<String, Object> orderDetails = new HashMap<>();
+
+        orderDetails.put("orderDate", date);
+        orderDetails.put("orderTime", time);
+        orderDetails.put("orderNo", orderNo);
+        orderDetails.put("totalBill", totalBill);
+
+        //Customer panel
+        fstore.collection("Order").document(mAuth.getCurrentUser().getUid()).collection("UserOrder").add(orderDetails).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@androidx.annotation.NonNull Task<DocumentReference> task) {
+                Toast.makeText(cart.this, "Payment Successful", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        //All Sales for Admin Panel
+        String key = "Prism-" + System.currentTimeMillis();
+        DocumentReference saleReference = fstore.collection("SalesAdmin").document(key.toString());
+        saleReference.set(orderDetails);
+
+
+        fstore.collection("Cart").document(mAuth.getCurrentUser().getUid().toString()).collection("UserCart").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@androidx.annotation.NonNull Task<QuerySnapshot> task) {
+
+
+                for (QueryDocumentSnapshot snapshot : task.getResult()) {
+
+                    fstore.collection("Cart").document(mAuth.getCurrentUser().getUid().toString()).collection("UserCart").document(snapshot.getId()).delete();
+                }
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@androidx.annotation.NonNull Exception e) {
+
+            }
+        });
+
 
     }
 }
