@@ -3,6 +3,7 @@ package com.example.prismmart.Homepage.Fragment;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -56,6 +57,9 @@ public class Homepage_Fragment extends Fragment implements View.OnClickListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_homepage, container, false);
+
+        getActivity().setRequestedOrientation(
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         ImageSlider slider = view.findViewById(R.id.image_slider);
         categoryRecycleView = view.findViewById(R.id.recycle_category);
