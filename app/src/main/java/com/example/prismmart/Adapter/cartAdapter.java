@@ -49,6 +49,13 @@ public class cartAdapter extends RecyclerView.Adapter<cartAdapter.ViewHolder> {
         return cartList.size();
     }
 
+
+    public void clearCart()
+    {
+        cartList.clear();
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView id, name, price, category, totalPrice, totalQuantity;
 

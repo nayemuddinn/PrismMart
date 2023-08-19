@@ -143,7 +143,9 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
                 return;
             }
             generateOrder(totalBill);
-            Toast.makeText(this, "Paid Successfully", Toast.LENGTH_SHORT).show();
+            adapter.clearCart();
+            Address.setText("");
+            Address.setHint("Enter Address here");
             pay.setText("PAY");
         }
 
@@ -184,7 +186,7 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
         saleReference.set(orderDetails);
 
         //All Order for Customer
-        DocumentReference customerReference = fstore.collection("CustomerOrder").document(mAuth.getCurrentUser().getUid().toString()).collection(date.toString()).document(key);
+        DocumentReference customerReference = fstore.collection("CustomerOrder").document(mAuth.getCurrentUser().getUid().toString()).collection("Order").document(key.toString());
         customerReference.set(orderDetails);
 
 
@@ -198,9 +200,7 @@ public class cart extends AppCompatActivity implements View.OnClickListener {
 
                     fstore.collection("Cart").document(mAuth.getCurrentUser().getUid().toString()).collection("UserCart").document(snapshot.getId()).delete();
                 }
-                List<cartModel>cartList=new ArrayList<>();
-                cartList.clear();
-                cartAdapter adapter=new cartAdapter(cart.this,cartList);
+
 
             }
         }).addOnFailureListener(new OnFailureListener() {
