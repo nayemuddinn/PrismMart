@@ -107,7 +107,11 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+        if(item.getItemId()==R.id.nav_settings)
+        {
+            Intent i = new Intent(Homepage.this, Settings.class);
+            startActivity(i);
+        }
         if (item.getItemId() == R.id.nav_logout) {
             Toast.makeText(Homepage.this, "Logged out", Toast.LENGTH_SHORT).show();
             auth.signOut();

@@ -7,7 +7,6 @@
     android:background="@drawable/homebackground"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="5dp"
     tools:context=".Admin.Upload_Product">
 
 
@@ -72,7 +71,7 @@
     <EditText
         android:id="@+id/upload_product_description"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:backgroundTint="@color/AppTheme"
         android:hint="Product Description"
         android:textColor="@color/black"

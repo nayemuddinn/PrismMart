@@ -80,7 +80,7 @@
         <EditText
             android:id="@+id/setting_email"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="62dp"
             android:drawableRight="@drawable/baseline_email_24"
             android:hint="UserEmail"
             android:padding="15dp"

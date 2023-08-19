@@ -88,7 +88,8 @@
                 android:layout_marginBottom="30dp"
                 android:text="there will be details  information about product"
                 android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:textStyle="bold|normal"
+                android:textSize="16dp" />
 
 
             <LinearLayout
