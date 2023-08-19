@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.prismmart.Homepage.UI.Homepage;
 import com.example.prismmart.R;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,6 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
@@ -46,6 +48,7 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
     String[] categoryName, Unitname;
     FirebaseFirestore fstore;
     StorageReference storageReference;
+    StorageTask storageTask;
 
     String name;
     String category;
@@ -108,12 +111,16 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
             intent.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(intent, image_req);
         }
+
+
         if (view.getId() == R.id.update_product_delete) {
+
             if (productID.getText().toString().equals(null) || productID.getText().toString().isEmpty()) {
                 productID.setError("Enter a Product ID");
                 productID.requestFocus();
                 return;
             }
+
             fstore.collection("All Product").whereEqualTo("productID", productID.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -140,6 +147,7 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
                 }
             });
         }
+
 
         if (view.getId() == R.id.update_product_View) {
 
@@ -172,8 +180,9 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
                 }
             });
 
-
         }
+
+
         if (view.getId() == R.id.update_update_product) {
 
             if (productID.getText().toString().equals(null) || productID.getText().toString().isEmpty()) {
@@ -211,66 +220,96 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
             unit = productUnit.getText().toString().trim();
 
 
-            if (imageSelect==true) {
+            if (imageSelect == true) {
                 String key = System.currentTimeMillis() + "." + getFileExtention(imageUri);
                 StorageReference ref = storageReference.child(key);
 
-                ref.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                storageTask = ref.putFile(imageUri);
+
+                storageTask.continueWithTask(new Continuation() {
                     @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(getApplicationContext(), "Success storage", Toast.LENGTH_SHORT).show();
+                    public Object then(@NonNull Task task) throws Exception {
+                        if (!task.isComplete()) {
+                            throw task.getException();
+                        }
+                        return ref.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()) {
+                            Uri downloadUri = task.getResult();
+                            imageURL = downloadUri.toString();
+                            Toast.makeText(Update_Product.this, "Uploaded Image", Toast.LENGTH_SHORT).show();
+                            fstore.collection("All Product").whereEqualTo("productID", productID.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful() && !task.getResult().isEmpty()) {
 
+                                        DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+                                        String documentID = documentSnapshot.getId();
 
-                        Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                        while (!uriTask.isSuccessful())
-                            ;   // waits until uriTask.isSuccessful() returns true
-                        Uri downloadUrL = uriTask.getResult();
-                        imageURL = downloadUrL.toString();
-                        Toast.makeText(Update_Product.this, imageURL, Toast.LENGTH_SHORT).show();
+                                        fstore.collection("All Product").document(documentID).update("productName", name, "productImage", imageURL, "productPrice", price, "productUnit", unit, "productDescription", description, "productCategory", category).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Toast.makeText(Update_Product.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@androidx.annotation.NonNull Exception e) {
+                                                Toast.makeText(Update_Product.this, "Failed to Update Product", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
 
+                                    } else {
+                                        Toast.makeText(Update_Product.this, "Product Not Found", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
 
                     }
-
-
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(@androidx.annotation.NonNull Exception e) {
-                        Toast.makeText(Update_Product.this,"Storage Upload Failed", Toast.LENGTH_SHORT).show();
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Update_Product.this, "Failed Storage", Toast.LENGTH_SHORT).show();
                     }
                 });
+            } else {
 
-            }
 
+                //Firestore work
+                fstore.collection("All Product").whereEqualTo("productID", productID.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful() && !task.getResult().isEmpty()) {
 
-            //Firestore work
-            fstore.collection("All Product").whereEqualTo("productID", productID.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                            DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+                            String documentID = documentSnapshot.getId();
 
-                        DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
-                        String documentID = documentSnapshot.getId();
+                            fstore.collection("All Product").document(documentID).update("productName", name, "productImage", imageURL, "productPrice", price, "productUnit", unit, "productDescription", description, "productCategory", category).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(Update_Product.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@androidx.annotation.NonNull Exception e) {
+                                    Toast.makeText(Update_Product.this, "Failed to Update Product", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
-                        fstore.collection("All Product").document(documentID).update("productName", name, "productImage", imageURL, "productPrice", price, "productUnit", unit, "productDescription", description, "productCategory", category).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(Update_Product.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@androidx.annotation.NonNull Exception e) {
-                                Toast.makeText(Update_Product.this, "Failed to Update Product", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-                    } else {
-                        Toast.makeText(Update_Product.this, "Product Not Found", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Update_Product.this, "Product Not Found", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
-
+                });
+            }
         }
+
+
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
