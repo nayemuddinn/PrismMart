@@ -16,7 +16,7 @@ import com.example.prismmart.R;
 public class SliderAdapter extends PagerAdapter {
 
     Context context;
-    int imageAry[] = {R.drawable.camera_homepage, R.drawable.ecommerce_lead_homepage,R.drawable.homepage_sliding_image5};
+    int imageAry[] = {R.drawable.camera_homepage, R.drawable.ecommerce_lead_homepage, R.drawable.luggage};
     int descriptionAry[] = {R.string.first_slide, R.string.second_slide, R.string.third_slide};
     int headAry[] = {R.string.first_head, R.string.second_head, R.string.third_head};
 
