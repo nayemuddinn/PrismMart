@@ -127,7 +127,7 @@ public class sign_in extends AppCompatActivity implements View.OnClickListener {
                 String type = documentSnapshot.getString("AccountType");
                 userName = documentSnapshot.getString("Full name");
                 if (type.equals(userType)) {
-                    Toast.makeText(sign_in.this, "Success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(sign_in.this, "Login Success", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(sign_in.this, HomePage_onBoard.class));
                     finish();
                 } else

@@ -146,6 +146,13 @@ public class Homepage extends AppCompatActivity implements NavigationView.OnNavi
             Intent i = new Intent(Homepage.this, Sales.class);
             startActivity(i);
         }
+        else if(item.getItemId()==R.id.nav_about)
+        {
+            {
+                Intent i = new Intent(Homepage.this, aboutUS.class);
+                startActivity(i);
+            }
+        }
         drawerLayout.closeDrawers();
         return true;
 

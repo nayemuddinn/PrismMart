@@ -11,6 +11,16 @@
 
     <string name="open_nav">Open Navigation Drawer</string>
     <string name="close_nav">Close Navigation Drawer</string>
+
+    <string name="about_us">Prism Mart is an ecommerce app developed using Android Studio
+and Firebase. It allows users to purchase items on their mobile
+devices, and provides a seamless shopping experience. With
+multiple payment options, users can easily make purchases and
+track their orders. Prism Marts intuitive and user-friendly interface
+makes it easy for customers to navigate and purchase products.
+The platform is optimized for mobile devices, allowing for seamless
+shopping experiences on-the-go.</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
