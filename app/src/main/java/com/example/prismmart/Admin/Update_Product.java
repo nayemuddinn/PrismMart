@@ -120,7 +120,7 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
                 return;
             }
 
-            fstore.collection("All Product").whereEqualTo("productID", productID.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            fstore.collection("All Product").whereEqualTo("productID", productID.getText().toString().toUpperCase()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if (task.isSuccessful() && !task.getResult().isEmpty()) {
@@ -157,7 +157,7 @@ public class Update_Product extends AppCompatActivity implements View.OnClickLis
             }
 
 
-            fstore.collection("All Product").whereEqualTo("productID", productID.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            fstore.collection("All Product").whereEqualTo("productID", productID.getText().toString().toUpperCase()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if (task.isSuccessful() && !task.getResult().isEmpty()) {

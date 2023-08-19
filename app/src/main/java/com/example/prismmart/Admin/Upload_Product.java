@@ -142,7 +142,7 @@ public class Upload_Product extends AppCompatActivity {
                         product.put("productDescription", description);
                         product.put("productName", name);
                         product.put("productUnit", unit);
-                        product.put("productID", ID);
+                        product.put("productID", ID.toUpperCase());
                         documentReference.set(product);
 
                     }
