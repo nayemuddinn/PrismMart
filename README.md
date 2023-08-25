@@ -54,10 +54,33 @@ On the homepage, all products are arranged according to category, allowing users
 Customers can use the search menu to look for any specific goods. The next page displays product information such as the product id, category, name, and description. The customer can choose the quantity and either place the item in their shopping cart or buy it now
 
 
+&emsp; &emsp; &emsp;  &emsp; ![Cart collage](https://github.com/nayemuddinn/PrismMart/assets/126597905/3abf29fc-29d5-4baf-b019-94f627e256c1)
+
+All of the items that were added to the cart will be displayed there along with the final bill that must be paid. The customer can select their address from Google Map.
+
+
+&emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; ![My orders](https://github.com/nayemuddinn/PrismMart/assets/126597905/01f62175-cf1f-410c-bc71-185e77d4f314)
+
+
+&emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; ![Logged out](https://github.com/nayemuddinn/PrismMart/assets/126597905/ed170892-294a-4e20-b8a1-a3434f00fe79)
 
 
 
 
+&emsp; &emsp; &emsp;  &emsp; ![admin login collage ](https://github.com/nayemuddinn/PrismMart/assets/126597905/6cff787b-3508-4914-861c-40af2a8005f9)
 
 
+
+&emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; ![All sales](https://github.com/nayemuddinn/PrismMart/assets/126597905/2c0e69f7-618d-4679-93ca-b3fc4af726a1)
+
+
+&emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; ![add product collage](https://github.com/nayemuddinn/PrismMart/assets/126597905/144a7018-bcf5-4331-aacf-94e390c796b1)
+
+![update Product](https://github.com/nayemuddinn/PrismMart/assets/126597905/b615f3ec-7e77-471f-aac0-64a6c2fbd4fa)
+
+
+
+&emsp; &emsp; &emsp;  &emsp; ![Setting](https://github.com/nayemuddinn/PrismMart/assets/126597905/3d9a2199-ed06-418a-80ef-0ac07abc8890)
+
+&emsp; &emsp; &emsp;  &emsp;  ![reset pass collage](https://github.com/nayemuddinn/PrismMart/assets/126597905/0680cab5-dd4b-4e47-9b9f-016adc1e42bd)
 
