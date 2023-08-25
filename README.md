@@ -61,9 +61,13 @@ All of the items that were added to the cart will be displayed there along with 
 
 &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; ![My orders](https://github.com/nayemuddinn/PrismMart/assets/126597905/01f62175-cf1f-410c-bc71-185e77d4f314)
 
+From the "My Orders" tab, a customer can view all of his or her prior orders, along with their order number, time and date, total payment, and provided address.
+
+
 
 &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; ![Logged out](https://github.com/nayemuddinn/PrismMart/assets/126597905/ed170892-294a-4e20-b8a1-a3434f00fe79)
 
+User may log out of the application.
 
 
 
@@ -71,7 +75,12 @@ All of the items that were added to the cart will be displayed there along with 
 
 
 
+
+
 &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; ![All sales](https://github.com/nayemuddinn/PrismMart/assets/126597905/2c0e69f7-618d-4679-93ca-b3fc4af726a1)
+
+All order information will be stored here with the date, order number and revenue.
+
 
 
 &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp;  &emsp; ![add product collage](https://github.com/nayemuddinn/PrismMart/assets/126597905/144a7018-bcf5-4331-aacf-94e390c796b1)
