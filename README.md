@@ -20,7 +20,7 @@ Studio and Firebase. There are two segments. Customer and administrative segment
 
 --- 
 
-_Here are some images showing this project's features_
+_Here are some images showing this app's features and UI_
 
 <br/>
 
