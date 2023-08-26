@@ -36,14 +36,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:background="@color/white"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp">
 
                 <TextView
                     android:id="@+id/productInfo_product_name"
@@ -80,16 +82,22 @@
 
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/productInfo_product_description"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="30dp"
-                android:text="there will be details  information about product"
-                android:textColor="@color/black"
-                android:textStyle="bold|normal"
-                android:textSize="16dp" />
+                android:layout_marginLeft="5dp">
+
+                <TextView
+                    android:id="@+id/productInfo_product_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:text="there will be details  information about product"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold|normal" />
+            </LinearLayout>
 
 
             <LinearLayout
@@ -179,25 +187,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="357dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:gravity="center"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
+                android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/productInfo_add_to_cart"
-                        android:layout_width="wrap_content"
+                        android:layout_width="161dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
                         android:backgroundTint="@color/AppTheme"
                         android:drawableLeft="@drawable/baseline_shopping_cart_24"
                         android:drawableTint="@color/white"
@@ -209,8 +208,9 @@
 
                     <Button
                         android:id="@+id/productInfo_buy_now"
-                        android:layout_width="wrap_content"
+                        android:layout_width="142dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
                         android:backgroundTint="@color/AppTheme"
                         android:drawableLeft="@drawable/baseline_catching_pokemon_24"
                         android:drawableTint="@color/white"
@@ -220,8 +220,6 @@
                         android:textSize="15dp"
                         android:textStyle="bold" />
 
-
-                </LinearLayout>
             </LinearLayout>
 
 
