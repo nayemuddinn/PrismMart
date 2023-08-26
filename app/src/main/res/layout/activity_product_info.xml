@@ -193,32 +193,32 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/productInfo_add_to_cart"
-                        android:layout_width="161dp"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@color/AppTheme"
-                        android:drawableLeft="@drawable/baseline_shopping_cart_24"
-                        android:drawableTint="@color/white"
-                        android:text="Add To Cart"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
+                <Button
+                    android:id="@+id/productInfo_add_to_cart"
+                    android:layout_width="161dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/AppTheme"
+                    android:drawableLeft="@drawable/baseline_shopping_cart_24"
+                    android:drawableTint="@color/white"
+                    android:text="Add To Cart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/productInfo_buy_now"
-                        android:layout_width="142dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="6dp"
-                        android:backgroundTint="@color/AppTheme"
-                        android:drawableLeft="@drawable/baseline_catching_pokemon_24"
-                        android:drawableTint="@color/white"
-                        android:text="Buy Now"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
+                <Button
+                    android:id="@+id/productInfo_buy_now"
+                    android:layout_width="142dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:backgroundTint="@color/AppTheme"
+                    android:drawableLeft="@drawable/baseline_catching_pokemon_24"
+                    android:drawableTint="@color/white"
+                    android:text="Buy Now"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
