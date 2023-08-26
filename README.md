@@ -8,11 +8,12 @@ Studio and Firebase. There are two segments. Customer and Admin segment. An admi
 
 ### App Specification
  ```
-. Language- Java
-. Platform -Android Studio
-. API Level - Android 10 (API level 29) 
-. Permissions – Internet, Storage,Location
-. Screen Orientations: Portrait
+. Language     - Java
+. Platform     - Android Studio
+. API Level    - Android 10 (API level 29)
+. Backend      - Firebase
+. Permissions  – Internet, Storage,Location
+. Screen Orientations - Portrait
 
  ```
 
