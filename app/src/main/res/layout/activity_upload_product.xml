@@ -39,10 +39,12 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/AppTheme"
         android:hint="Product ID"
+        android:textSize="19dp"
         android:textColor="@color/black"
         android:textColorHint="#ACA6A6"></EditText>
 
     <EditText
+        android:textSize="19dp"
         android:id="@+id/upload_product_name"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -53,6 +55,7 @@
 
 
     <AutoCompleteTextView
+        android:textSize="19dp"
         android:id="@+id/upload_product_catagory"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -61,6 +64,7 @@
         android:textColorHint="#ACA6A6"></AutoCompleteTextView>
 
     <AutoCompleteTextView
+        android:textSize="19dp"
         android:id="@+id/upload_product_unit_type"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -69,6 +73,7 @@
         android:textColorHint="#ACA6A6"></AutoCompleteTextView>
 
     <EditText
+        android:textSize="19dp"
         android:id="@+id/upload_product_description"
         android:layout_width="350dp"
         android:layout_height="45dp"
@@ -78,6 +83,7 @@
         android:textColorHint="#ACA6A6"></EditText>
 
     <EditText
+        android:textSize="19dp"
         android:id="@+id/upload_product_price"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
