@@ -1,6 +1,5 @@
 # Prism Mart
 
----
 
 **Prism Mart** is a modern e-commerce application built with **Android Studio** and powered by **Firebase**.  
 It is designed to deliver a smooth and reliable shopping experience for customers while providing powerful management tools for administrators.  
