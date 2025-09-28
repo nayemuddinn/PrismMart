@@ -1,8 +1,38 @@
 # Prism Mart
 ---
-'Prism Mart' is an ecommerce app developed using Android 
-Studio and Firebase. There are two segments. Customer and Admin segment. An admin who has this role can use the app to manage several aspects of their business, including orders, sales track, and product information (by uploading new products, deleting existing ones, or updating existing ones). On the other side, a person can register as a customer and login to the app using the proper credentials. A customer can search for a certain product, add it to their cart. When placing a order, he or she can add their address through Google Maps.Through the myorder page, a customer can view all of his prior orders. The setting page allows both the admin and the customer to change their login credentials and other information. There is a password reset option in the sign in page  if the user forgets their password.
- All of the information about the user, the product, the order, and the cart is handled using the Firebase database.
+# Prism Mart
+
+---
+
+**Prism Mart** is a modern e-commerce application built with **Android Studio** and powered by **Firebase**.  
+It is designed to deliver a smooth and reliable shopping experience for customers while providing powerful management tools for administrators.  
+
+The application is divided into two primary roles: **Admin** and **Customer**.  
+
+- The **Admin role** equips business owners or managers with tools to efficiently oversee operations. Admins can track and manage orders, monitor sales performance, and control the product catalog by adding, updating, or removing items.  
+- The **Customer role** provides an intuitive interface for shoppers to browse products, search efficiently, manage a shopping cart, and place orders with delivery details captured seamlessly through **Google Maps integration**. Customers can review their order history, update personal information, and reset passwords when needed.  
+
+All application data, including users, products, orders, and cart information, is securely managed using the **Firebase Realtime Database**, ensuring real-time synchronization and consistency.  
+
+---
+
+## Features
+
+- **User Authentication** – Secure registration, login, and password recovery.  
+- **Admin Dashboard** – Manage orders, track sales, and update product listings.  
+- **Product Management** – Add, edit, and delete products with ease.  
+- **Customer Experience** – Search for products, add to cart, and place orders quickly.  
+- **Google Maps Integration** – Conveniently set and update delivery addresses.  
+- **Order History** – Customers can view and track all past purchases.  
+- **Profile & Settings** – Update login credentials and personal details anytime.  
+- **Realtime Database** – Reliable backend powered by Firebase for instant updates.  
+
+---
+
+## App Specifications
+
+  
+
 
 
 
