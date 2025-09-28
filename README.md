@@ -1,6 +1,4 @@
 # Prism Mart
----
-# Prism Mart
 
 ---
 
