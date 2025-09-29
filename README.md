@@ -26,12 +26,6 @@ All application data, including users, products, orders, and cart information, i
 
 ---
 
-## App Specifications
-
-  
-
-
-
 
 ### App Specification
  ```
@@ -47,6 +41,13 @@ All application data, including users, products, orders, and cart information, i
  <br/>
 
 --- 
+
+## Download
+
+You can try out the app by downloading the latest APK:  
+
+[📥 Download Prism Mart APK](./Prism_Mart.apk)
+
 
 _Here are some images showing this app's features and UI_
 
